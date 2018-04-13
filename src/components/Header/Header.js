@@ -178,8 +178,6 @@ const LOGGED_IN_USER = gql`
     loggedInUser {
       id
       avatar
-      firstName
-      lastName
     }
   }
 `

@@ -111,7 +111,7 @@ class Header extends React.Component {
           </div>
             </li>
             <li><a  style={{fontSize:'20px'}}><i className="far fa-bell"></i></a></li>
-            <li><img src={this.props.data.loggedInUser.avatar} className="img-circle" style={{margin:'10px 0 0 10px'}} /></li> 
+            <li><img src={this.props.data.loggedInUser.avatar} className="img-circle" style={{margin:'10px 0 0 10px', width:'33px'}} /></li> 
                
         </ul>
      </div> 

@@ -798,7 +798,7 @@ background-image: linear-gradient(left, #DA2B4C 0%,#DA2B4C 12.5%,#e37f52 12.5%,#
 .post-type-california .post-content-page .post-title a{ color:#393939;}
 .post-type-california .post-content-page .post-author{ float:left; font-family: "Poppins", sans-serif; font-size:11px;}
 .post-type-california .post-content-page .post-author img{ width:32px; float:left; border-radius:50%; margin-right:6px;}
-.post-type-california .post-content-page .post-author a{ line-height:32px; float:left; color:#000; text-transform:uppercase;}
+.post-type-california .post-content-page .post-author a{ line-height:32px; float:left; color:#000; text-transform:uppercase;margin-left: 5px;}
 .post-type-california .post-content-page .post-date{ float:left; font-family: "Poppins", sans-serif; font-size:11px; color:#9d9d9d; line-height:32px; margin-left:10px;}
 .post-type-california .post-content-page .post-rating{ width:100%; float:left; margin:10px 0;}
 .post-type-california .post-content-page p{margin-top: 0px;margin-bottom: 10px; width:100%; float:left; color:#6d6d6d;line-height: 1.5; font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif; font-size: 16px;}

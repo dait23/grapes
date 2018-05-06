@@ -1,0 +1,6 @@
+{
+  "name": "Publication",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./Publication.js"
+}

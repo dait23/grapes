@@ -1,8 +1,15 @@
 /*global FB*/
 
 import React from 'react'
-import { withRouter } from 'react-router'
-import { Button } from 'reactstrap';
+import { Link, withRouter } from 'react-router-dom'
+import { 
+  Button,
+  Dropdown,
+  DropdownMenu,
+  DropdownItem, 
+    DropdownToggle
+
+} from 'reactstrap';
 
 import { graphql, compose } from 'react-apollo'
 import gql from 'graphql-tag'
@@ -11,6 +18,22 @@ const FACEBOOK_APP_ID = '157034504985378'
 const FACEBOOK_API_VERSION = 'v2.12' // e.g. v2.10
 
 class Header extends React.Component {
+
+   constructor(props) {
+    super(props);
+
+    this.toggle = this.toggle.bind(this);
+    this.state = {
+      dropdownOpen: false,
+    };
+  }
+  
+
+  toggle() {
+    this.setState({
+      dropdownOpen: !this.state.dropdownOpen
+    });
+  }
 
   componentDidMount() {
     this._initializeFacebookSDK()
@@ -63,8 +86,13 @@ class Header extends React.Component {
   }
 
   _logout = () => {
-    localStorage.removeItem('nordic')
-    localStorage.removeItem('uid')
+
+     localStorage.clear();
+     localStorage.removeItem('nordic');
+     localStorage.removeItem('uid');
+    // localStorage.removeItem('uid')
+    //localStorage.removeItem('nordic')
+    // localStorage.removeItem('nordic');
     window.location.reload()
   }
 
@@ -72,15 +100,55 @@ class Header extends React.Component {
   render () {
     if (this._isLoggedIn()) {
        localStorage.setItem('uid', this.props.data.loggedInUser.id);
-     console.log(this.props.data.loggedInUser.id);
+
       return this.renderLoggedIn()
     } else {
       return this.renderLoggedOut()
     }
 
+
+                                  
+                                     
+                                  
+
+
+  }
+
+  renderThumb(){
+     const pic = "https://res.cloudinary.com/nomadic-id/image/facebook/c_scale,r_50,w_50/" + this.props.data.loggedInUser.facebookUserId + ".jpg"
+
+    if(this.props.data.loggedInUser.avatar === '' ){
+
+     return(
+
+         <img src={pic} className="img-circle" style={{margin:'5px 0 0 5px', width:'33px'}} />
+
+      )
+
+    }else{
+
+        return(
+
+         <img src={this.props.data.loggedInUser.avatar} className="img-circle" style={{margin:'5px 0 0 5px', width:'33px'}} />
+
+      )
+
+    }
+
+
   }
 
   renderLoggedIn() {
+     //     const Uid = localStorage.getItem('uid');
+     // console.log(Uid);
+
+     if(this.props.data.loggedInUser.isInterested == false){
+
+          window.location.href="/welcome"
+
+     }else{
+
+   
     return (
       <div>
        
@@ -102,16 +170,35 @@ class Header extends React.Component {
      <div id="navbar" className="navbar-collapse collapse">
       <ul className="nav navbar-nav navbar-right">
             
-              <li>
-                <div className="search-wrapper">
-            <div className="input-holder">
-              <input className="search-input" type="text" placeholder="Search Nomadic" />
-              <button className="search-icon"><i className="fas fa-search" style={{fontSize:'15px', marginTop:'5px'}}></i></button>
-            </div>
-          </div>
+              
+            <li>
+              
+              <Link to="/new-story"  style={{margin:'5px 0px', fontSize:'14px'}} alt="Add new storie"><i className="far fa-edit" style={{fontSize:'20px'}}></i>&nbsp;&nbsp; New Storie</Link>
+
             </li>
-            <li><a  style={{fontSize:'20px'}}><i className="far fa-bell"></i></a></li>
-            <li><img src={this.props.data.loggedInUser.avatar} className="img-circle" style={{margin:'10px 0 0 10px', width:'33px'}} /></li> 
+           
+            <li>
+
+            <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+              <DropdownToggle>
+               {this.renderThumb()} &nbsp;&nbsp;
+
+                <span className="d-md-down-none"></span>
+              </DropdownToggle>
+              <DropdownMenu right>
+                <DropdownItem divider/>
+                <DropdownItem style={{margin:'5px 0'}}><a href="/me/stories/drafts">Drafts</a> </DropdownItem>
+                <DropdownItem style={{margin:'5px 0'}}><a href="/me/stories/publish">Publish</a> </DropdownItem>
+                <DropdownItem style={{margin:'5px 0'}}><a href="/me/publications">Publications</a></DropdownItem>
+                <DropdownItem style={{margin:'5px 0'}}><a href="/me/topics/interest">Interests</a></DropdownItem>
+                <DropdownItem style={{margin:'5px 0'}}><a href="/me/settings">Settings</a></DropdownItem>
+                <DropdownItem  onClick={this._logout} style={{margin:'5px 0'}}> Logout</DropdownItem>
+                <DropdownItem divider/>
+              </DropdownMenu>
+            </Dropdown>
+
+
+            </li>
                
         </ul>
      </div> 
@@ -120,7 +207,8 @@ class Header extends React.Component {
       </nav>
 
       </div>
-    )
+     )
+    }
   }
 
   renderLoggedOut() {
@@ -145,19 +233,13 @@ class Header extends React.Component {
      <div id="navbar" className="navbar-collapse collapse">
       <ul className="nav navbar-nav navbar-right">
             
-              <li>
-                <div className="search-wrapper">
-                  <div className="input-holder">
-                    <input className="search-input" type="text" placeholder="Search Nomadic" />
-                    <button className="search-icon"><i className="fas fa-search" style={{fontSize:'15px', marginTop:'5px'}}></i></button>
-                  </div>
-                </div>
-             </li>
+             
             <li>
              
              
 
-             <Button className="btn login" outline color="success" onClick={this._handleFBLogin} ><i class="fab fa-facebook-square"></i> &nbsp; Sign with Facebook</Button>
+          
+             <Button color="primary" onClick={this._handleFBLogin} style={{marginTop:'8px', fontSize:'12px', fontWeight:'600'}}><i className="fab fa-facebook-square" style={{ fontSize:'15px', }}></i> &nbsp; Signin with Facebook</Button>
 
             </li>
            
@@ -178,6 +260,8 @@ const LOGGED_IN_USER = gql`
     loggedInUser {
       id
       avatar
+      facebookUserId
+    
     }
   }
 `

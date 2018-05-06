@@ -261,6 +261,7 @@ const LOGGED_IN_USER = gql`
       id
       avatar
       facebookUserId
+      isInterested
     
     }
   }

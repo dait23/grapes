@@ -140,11 +140,11 @@ class Header extends React.Component {
 
   renderLoggedIn() {
      //     const Uid = localStorage.getItem('uid');
-     // console.log(Uid);
+     console.log(this.props.data.loggedInUser.isInterested);
 
      if(this.props.data.loggedInUser.isInterested == false){
 
-          window.location.href="/welcome"
+          window.location.href="/welcome";
 
      }else{
 

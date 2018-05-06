@@ -115,22 +115,6 @@ onRead() {
                 name
                 slug
               }
-              comments{
-                  id
-                  text
-                  user{
-                    id
-                    username
-                    avatar
-                    member{
-                      firstName
-                      lastName
-                      imageUrl
-                      imageId
-                    }
-                  }
-                
-                }
               user{
                 username
                 facebookUserId
@@ -178,7 +162,6 @@ onRead() {
               body:results.data.Post.body,
               read:results.data.Post.read,
               reading:results.data.Post.reading,
-              comments:results.data.Post.comments,
               createdAt:results.data.Post.createdAt,
               updatedAt:results.data.Post.updatedAt,
               topics:results.data.Post.topics,

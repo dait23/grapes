@@ -249,7 +249,7 @@ renderTopic(){
                            <Form>
 
                                 <FormGroup row>
-                                  <Label sm={2} style={{height:'50px', fontSize:'16px', fontWeight:'600'}}>Topics</Label>
+                                  <Label sm={2} style={{height:'50px', fontSize:'16px', fontWeight:'600'}}>Follow Topics</Label>
                                   <Col sm={10}>
                                      {this.renderTopic()}
                                   </Col>

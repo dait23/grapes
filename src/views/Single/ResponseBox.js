@@ -32,9 +32,9 @@ static propTypes = {
 
 renderThumb(){
   //console.log(this.props.id)
-     const pic = "https://res.cloudinary.com/nomadic-id/image/facebook/c_scale,r_80,w_80/" + this.props.fbId + ".jpg"
+     const pic = "https://res.cloudinary.com/nomadic-id/image/facebook/c_scale,r_80,w_80/" + this.props.data.User.facebookUserId + ".jpg"
 
-    if(this.props.avatar == '' ){
+    if(this.props.data.User.avatar == '' ){
 
      return(
 
@@ -46,7 +46,7 @@ renderThumb(){
 
         return(
 
-         <img src={this.props.avatar} className="img-circle"  alt="avatarID" />
+         <img src={this.props.data.User.avatar} className="img-circle"  alt="avatarID" />
 
       )
 
@@ -98,7 +98,10 @@ renderThumb(){
 
 
   render() {
+if (this.props.data.loading) {
+      return ( <div></div>)
 
+    }
     
 
     return (
@@ -166,6 +169,7 @@ handlePost = async () => {
 }
 
 
+const Uid = window.localStorage.getItem('uid');
 
 const CREATE_SAVE_COMMENT = gql`
   mutation CreateCommentMutation (
@@ -184,12 +188,29 @@ const CREATE_SAVE_COMMENT = gql`
   }
 `
 
+const Queryx = gql`query allPostsx($id: ID!) {
+
+  User(id: $id){
+    id
+    avatar
+    facebookUserId
+    member{
+      id
+      imageUrl
+      imageId
+    }
+  }
+
+}`
 
 
 
 export default compose(
  
    graphql(CREATE_SAVE_COMMENT, { name: 'createCommentMutation' }),
+   graphql(Queryx, {
+    options: { variables: { id: Uid } }
+  })
  
  
 )(withRouter(ResponseBox))

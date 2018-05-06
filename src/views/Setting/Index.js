@@ -328,7 +328,16 @@ renderThumb(){
                           </Col>
                            <Col sm={4}>
 
-                              {this.renderThumb()}
+                              {this.state.imageUrl === '' ? <i className="far fa-image" style={{fontSize:'50px', color:'#888'}}></i> :
+
+                                  
+                             
+
+                                             <Image cloudName={Cloudinary_Name} publicId={this.state.imageId}  crop="scale"  width="50" height="50" alt="cover"/>
+                                           
+                                  
+                                     
+                                  }
 
                            </Col>
                         </FormGroup>

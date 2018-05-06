@@ -18,7 +18,14 @@ static propTypes = {
 
 
 renderComment(){
- const commentList = this.props.data.allComments || [ ]
+
+  
+    if (this.props.data.loading) {
+
+     return (<div></div>)
+    }
+
+ const commentList = this.props.data.allComments || []
 
   if(this.props.data.allComments == ''){
 

@@ -29,7 +29,8 @@ class Interest extends Component {
     super(props)
     this.state = { 
      
-     loading:false
+     loading:false,
+     isInterested: true
 
       }
 
@@ -287,9 +288,9 @@ renderTopic(){
     }
      
     const userId = localStorage.getItem('uid');
-    const { id, topicsIds} = this.state
+    const { id, topicsIds, isInterested} = this.state
   
-    await this.props.updateInterestMutation({variables: { id, topicsIds }})
+    await this.props.updateInterestMutation({variables: { id, topicsIds, isInterested, userId }})
      toast('Update Success', { type: toast.TYPE.SUCCESS, autoClose: 2000 })
   }
 
@@ -306,12 +307,21 @@ const UPDATE_POST_MUTATION = gql`
   mutation updateInterestMutation (
       $id: ID!
       $topicsIds: [ID!]
+      $isInterested: Boolean
+      $userId: ID!
 
   ) {
     updateInterest(
         id: $id,
         topicsIds: $topicsIds,
     ) {
+      id
+    }
+    updateUser(
+      id: $userId
+      isInterested: $isInterested
+
+     ){
       id
     }
   }

@@ -30,6 +30,34 @@ class Topic extends Component {
 }
 
 
+
+
+renderThumb(){
+     const pic = "https://res.cloudinary.com/nomadic-id/image/facebook/c_scale,r_80,w_80/" + this.props.post.user.facebookUserId + ".jpg"
+
+    if(this.props.post.user.avatar == '' ){
+
+     return(
+
+         <img src={pic} className="img-circle" style={{margin:'5px 0 0 5px', width:'33px'}} />
+
+      )
+
+    }else{
+
+        return(
+
+         <img src={this.props.post.user.avatar} className="img-circle" style={{margin:'0px 5px 0 5px', width:'30px'}} />
+
+      )
+
+    }
+
+
+  }
+
+
+
   render() {
 
 
@@ -55,7 +83,7 @@ class Topic extends Component {
                            <div className="post-content-page">
                           <a href={`/@${this.props.post.user.username}/${this.props.post.slug}`}>  <h4 className="post-title">{this.props.post.title}</h4></a>
                            <p>{this.props.post.headline}</p>
-                           <span className="post-author"><img src={pic} alt={this.props.post.title} /><a href={`/@${this.props.post.user.username}`}>{this.props.post.user.member.firstName} {this.props.post.user.member.lastName}</a> </span><span className="post-date">{this.renderPublish()} - {createDT},  {this.props.post.reading} min read</span> 
+                           <span className="post-author">{this.renderThumb()}<a href={`/@${this.props.post.user.username}`}>{this.props.post.user.member.firstName} {this.props.post.user.member.lastName}</a> </span><span className="post-date">{this.renderPublish()} - {createDT},  {this.props.post.reading} min read</span> 
                           <span className="pull-right"  style={{fontSize:'18px'}} ><i className="far fa-bookmark"></i></span>
                          </div>
 

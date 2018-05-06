@@ -102,7 +102,8 @@ class Header extends React.Component {
        localStorage.setItem('uid', this.props.data.loggedInUser.id);
 
       return this.renderLoggedIn()
-    } else {
+    }  
+     else {
       return this.renderLoggedOut()
     }
 
@@ -140,13 +141,9 @@ class Header extends React.Component {
 
   renderLoggedIn() {
      //     const Uid = localStorage.getItem('uid');
-     console.log(this.props.data.loggedInUser.isInterested);
+     // console.log(this.props.data.loggedInUser.isInterested);
 
-     if(this.props.data.loggedInUser.isInterested == false){
-
-          window.location.href="/welcome";
-
-     }else{
+   
 
    
     return (
@@ -208,7 +205,7 @@ class Header extends React.Component {
 
       </div>
      )
-    }
+    
   }
 
   renderLoggedOut() {

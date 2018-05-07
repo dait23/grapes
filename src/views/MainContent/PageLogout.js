@@ -248,7 +248,7 @@ class PageLogout extends Component {
 const QueryLog = gql`query allPosts {
  allPosts(orderBy: createdAt_DESC,filter:{
     isPublished:true
-  }, last:10) {
+  }, first:15) {
         id
         title
         slug

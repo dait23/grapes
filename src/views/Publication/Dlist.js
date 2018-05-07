@@ -36,16 +36,50 @@ class Dlist extends Component {
 
   renderStatus(){
 
-    if(this.props.post.isOwner == true){
+    if(this.props.post.writters !== '' && this.props.post.isOwner == true){
     
      return(
 
-       <span>Owner</span>
+       <span style={{fontSize:'14px'}}> - Owner</span>
      )
 
     }else{
 
-      return
+      return(
+
+       <span style={{fontSize:'14px'}}> - Writter</span>
+     )
+    }
+
+
+  }
+
+
+  renderAction(){
+
+    if(this.props.post.writters !== '' && this.props.post.isOwner == true){
+    
+      return(
+
+
+        <div>
+                     <span className="pull-right"  style={{fontSize:'13px', marginLeft:'10px', cursor:'pointer'}} onClick={this.handleDelete} >Delete</span>
+                     <span className="pull-right"  style={{fontSize:'13px', marginLeft:'10px'}} ><a href={`/me/publication/edit/${this.props.post.id}`}>Settings</a></span>
+                     <span className="pull-right"  style={{fontSize:'13px', marginLeft:'10px'}} ><a href={`/me/publication/stats/${this.props.post.id}`}>Stats</a></span>
+                     <span className="pull-right"  style={{fontSize:'13px'}} ><a href={`/me/publication/new-story/${this.props.post.id}`}>New Stories</a></span>
+        </div>
+
+      )
+    }else{
+
+
+      return(
+                  <div>
+                     <span className="pull-right"  style={{fontSize:'13px', marginLeft:'10px'}} ><a href={`/me/publication/stats/${this.props.post.id}`}>Stats</a></span>
+                     <span className="pull-right"  style={{fontSize:'13px'}} ><a href={`/me/publication/new-story/${this.props.post.id}`}>New Stories</a></span>
+                </div>
+
+      )
     }
 
 
@@ -69,7 +103,7 @@ class Dlist extends Component {
                  {this.renderImage()}
             
                    <div className="post-content">
-                    <a href={`/${this.props.post.slug}`}>  <h4 className="post-title">{this.props.post.name}</h4></a> {this.renderStatus()}
+                    <a href={`/${this.props.post.slug}`}>  <h4 className="post-title">{this.props.post.name}  {this.renderStatus()}</h4> </a> 
                     <div dangerouslySetInnerHTML={{ __html: this.props.post.description }} style={{fontSize:'13px'}}></div>
                     
                      <span className="post-date" style={{marginLeft:'-0px', marginTop:'-5px'}}>{createDT} </span> 
@@ -77,10 +111,7 @@ class Dlist extends Component {
                    </div>
                    <div style={{display:'block', float:'left', width:'37%'}}>
 
-                     <span className="pull-right"  style={{fontSize:'13px', marginLeft:'10px', cursor:'pointer'}} onClick={this.handleDelete} >Delete</span>
-                     <span className="pull-right"  style={{fontSize:'13px', marginLeft:'10px'}} ><a href={`/me/publication/edit/${this.props.post.id}`}>Settings</a></span>
-                     <span className="pull-right"  style={{fontSize:'13px', marginLeft:'10px'}} ><a href={`/me/publication/edit/${this.props.post.id}`}>Stats</a></span>
-                     <span className="pull-right"  style={{fontSize:'13px'}} ><a href={`/me/publication/new-story/${this.props.post.id}`}>New Stories</a></span>
+                      {this.renderAction()} 
 
                    </div>
               </div>

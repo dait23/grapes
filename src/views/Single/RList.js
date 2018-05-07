@@ -24,7 +24,7 @@ class List extends React.Component {
  
  renderRemove(){
 
-  if(this.props.comment.user.id == localStorage.getItem('uid') ){
+  if(this.props.comment.user.id == localStorage.getItem('uid') && localStorage.getItem('nordic') !== null ){
 
     return(
 

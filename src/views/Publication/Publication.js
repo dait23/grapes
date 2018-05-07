@@ -147,11 +147,17 @@ renderList(){
 const Uid = window.localStorage.getItem('uid');
 
 const QueryPublic = gql`query allPublicDraft($id: ID!) {
- allPublishings(filter:{
-    user:{
-      id: $id
-    }
-  }, orderBy: createdAt_DESC) {
+ allPublishings(filter: {
+    OR: [{
+      user:{
+        id: $id
+      }
+    }, {
+      writters_some:{
+        id: $id
+      }
+    }]
+  },orderBy: createdAt_DESC) {
         id
         name
         slug

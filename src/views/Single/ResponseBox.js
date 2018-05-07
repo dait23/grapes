@@ -58,7 +58,7 @@ renderThumb(){
   renderButton(){
 
 
-    if(localStorage.getItem('uid') == null ){
+    if(localStorage.getItem('uid') && localStorage.getItem('nordic') == null ){
 
       return(
          <div>

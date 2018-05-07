@@ -158,7 +158,8 @@ const QueryPublic = gql`query allPublicDraft($id: ID!) {
         description
         avatarId
         avatarUrl
-        createdAt  
+        createdAt
+        isOwner  
            
      }
 

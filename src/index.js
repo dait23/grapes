@@ -141,6 +141,13 @@ const EditPublish = Loadable({
 
 });
 
+const StatPublish = Loadable({
+ loader: () => fakeDelay(500).then(() => import('./views/Publication/Stats/')),
+  loading: Loading,
+  timeout: 10000, // 10 seconds
+
+});
+
 const Login = Loadable({
  loader: () => fakeDelay(500).then(() => import('./views/Login')),
   loading: Loading,
@@ -220,6 +227,7 @@ render(
              <Route path="/me/topics/interest" component={Interest} />
              <Route path="/me/publications" component={Publication} />
              <Route path="/me/publication/edit/:id" component={EditPublish} />
+             <Route path="/me/publication/stats/:id" component={StatPublish} />
              <Route path="/me/publication/new-story/:id" component={StoryPublish} />
              <Route path="/me/list/bookmarks" component={Login} />
              <Route path="/me/settings" component={Setting} />

@@ -34,6 +34,23 @@ class Dlist extends Component {
 
   }
 
+  renderStatus(){
+
+    if(this.props.post.isOwner == true){
+    
+     return(
+
+       <span>Owner</span>
+     )
+
+    }else{
+
+      return
+    }
+
+
+  }
+
 
   render() {
 
@@ -52,7 +69,7 @@ class Dlist extends Component {
                  {this.renderImage()}
             
                    <div className="post-content">
-                    <a href={`/${this.props.post.slug}`}>  <h4 className="post-title">{this.props.post.name}</h4></a>
+                    <a href={`/${this.props.post.slug}`}>  <h4 className="post-title">{this.props.post.name}</h4></a> {this.renderStatus()}
                     <div dangerouslySetInnerHTML={{ __html: this.props.post.description }} style={{fontSize:'13px'}}></div>
                     
                      <span className="post-date" style={{marginLeft:'-0px', marginTop:'-5px'}}>{createDT} </span> 

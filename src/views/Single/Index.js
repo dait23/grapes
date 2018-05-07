@@ -15,6 +15,7 @@ import Response from './Response'
 import ResponseBox from './ResponseBox'
 import moment from 'moment';
 import 'moment/locale/id';
+import List from './RList';
 moment.locale('id');
 
 
@@ -115,13 +116,14 @@ onRead() {
                 name
                 slug
               }
-              comments{
+              comments(orderBy: createdAt_DESC){
                   id
                   text
                   user{
                     id
                     username
                     avatar
+                    facebookUserId
                     member{
                       firstName
                       lastName
@@ -297,6 +299,54 @@ renderUpdated(){
     )
 
   }
+
+}
+
+
+
+renderComment(){
+
+     const commentList = this.state.comments || [ ]
+
+  if(this.state.comments == ''){
+
+    return(
+    
+       <div className="row" style={{marginBottom:'0px', marginTop:'10px'}}>
+
+           <div className="col-md-1"></div>
+
+
+           <div className="col-md-10"><p style={{fontSize:'14px'}}>No responses for this storie...</p></div>
+
+           <div className="col-md-1"></div>
+
+
+           </div>
+
+
+
+    )
+  }else{
+
+   return(
+
+     <div>
+
+                                  {commentList.map((comment) => (
+                                    <List
+                                key={comment.id}
+                                comment={comment}
+                              />
+                          ))}
+
+                            </div>
+
+   )
+
+
+  }
+
 
 }
   
@@ -492,13 +542,8 @@ renderUpdated(){
 
 
 
-
-                            <Response 
-
-                             id={this.state.id}
-                           
-
-                            />
+                            {this.renderComment()}
+                            
                                  
 
 

@@ -85,24 +85,26 @@ class Header extends React.Component {
      
   }
 
-   _logout = () => {
+  _logout = () => {
 
      localStorage.clear();
-     localStorage.removeItem('nordic') && localStorage.removeItem('uid');
+     localStorage.removeItem('nordic');
      //localStorage.removeItem('uid');
     // localStorage.removeItem('uid')
     //localStorage.removeItem('nordic')
     // localStorage.removeItem('nordic');
-    window.location.reload()
+    window.location.href('/');
   }
+
 
   render () {
     if (this._isLoggedIn()) {
+
        localStorage.setItem('uid', this.props.data.loggedInUser.id);
 
       return this.renderLoggedIn()
-    }  
-     else {
+    } else {
+      localStorage.removeItem('uid')
       return this.renderLoggedOut()
     }
 
@@ -140,9 +142,9 @@ class Header extends React.Component {
 
   renderLoggedIn() {
      //     const Uid = localStorage.getItem('uid');
-     // console.log(this.props.data.loggedInUser.isInterested);
+    //console.log(this.props.data.loggedInUser.isInterested);
 
-   
+    
 
    
     return (
@@ -169,7 +171,7 @@ class Header extends React.Component {
               
             <li>
               
-              <Link to="/new-story"  style={{margin:'5px 0px', fontSize:'14px'}} alt="Add new storie"><i className="far fa-edit" style={{fontSize:'20px'}}></i>&nbsp;&nbsp; New Storie</Link>
+              <a href="/new-story"  style={{margin:'5px 0px', fontSize:'14px'}} alt="Add new storie"><i className="far fa-edit" style={{fontSize:'20px'}}></i>&nbsp;&nbsp; New Storie</a>
 
             </li>
            
@@ -235,7 +237,7 @@ class Header extends React.Component {
              
 
           
-             <Button color="primary" onClick={this._handleFBLogin} style={{marginTop:'8px', fontSize:'12px', fontWeight:'600'}}><i className="fab fa-facebook-square" style={{ fontSize:'15px', }}></i> &nbsp; Signin with Facebook</Button>
+             <Button color="primary" onClick={this._handleFBLogin} style={{marginTop:'8px', fontSize:'12px', fontWeight:'600'}}><i className="fab fa-facebook-square" style={{ fontSize:'15px', }}></i> &nbsp; Login Facebook</Button>
 
             </li>
            
@@ -257,7 +259,6 @@ const LOGGED_IN_USER = gql`
       id
       avatar
       facebookUserId
-      isInterested
     
     }
   }

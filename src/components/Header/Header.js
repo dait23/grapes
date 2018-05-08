@@ -87,13 +87,13 @@ class Header extends React.Component {
 
   _logout = () => {
 
-     localStorage.clear();
+     window.localStorage.clear();
      //localStorage.removeItem('nordic') && localStorage.removeItem('uid');
      //localStorage.removeItem('uid');
     // localStorage.removeItem('uid')
     //localStorage.removeItem('nordic')
     // localStorage.removeItem('nordic');
-    window.location.href('/');
+     window.location.reload()
   }
 
 
@@ -104,7 +104,7 @@ class Header extends React.Component {
 
       return this.renderLoggedIn()
     } else {
-      localStorage.removeItem('uid')
+      //localStorage.removeItem('uid')
       return this.renderLoggedOut()
     }
 

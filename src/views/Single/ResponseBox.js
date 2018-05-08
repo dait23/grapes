@@ -32,9 +32,11 @@ static propTypes = {
 
 renderThumb(){
   //console.log(this.props.id)
-     const pic = "https://res.cloudinary.com/nomadic-id/image/facebook/c_scale,r_80,w_80/" + this.props.data.User.facebookUserId + ".jpg"
+     
 
     if(this.props.data.User.avatar == '' ){
+
+      const pic = "https://res.cloudinary.com/nomadic-id/image/facebook/c_scale,r_80,w_80/" + this.props.data.User.facebookUserId + ".jpg"
 
      return(
 
@@ -55,10 +57,39 @@ renderThumb(){
 
   }
 
+  renderInOut(){
+
+
+     if(localStorage.getItem('uid') == null){
+
+
+       return(
+      
+          <div><i className="far fa-comment" style={{fontSize:'30px'}}></i></div>
+
+        )
+
+     }else{
+
+        return(
+
+            <div>
+
+              {this.renderThumb()}
+
+            </div>
+
+
+          )
+
+     }
+
+  }
+
   renderButton(){
 
 
-    if(localStorage.getItem('uid') && localStorage.getItem('nordic') == null ){
+    if(localStorage.getItem('uid') == null  && localStorage.getItem('nordic') == null ){
 
       return(
          <div>
@@ -116,7 +147,7 @@ if (this.props.data.loading) {
 
                          <div className="row" style={{border:'1px solid #ccc', padding:'20px 10px', background:'#fff'}}>
 
-                            <div className="col-sm-2" style={{width:'60px'}}>{this.renderThumb()}</div>
+                            <div className="col-sm-2" style={{width:'60px'}}>{this.renderInOut()}</div>
                              <div className="col-sm-10">
 
 

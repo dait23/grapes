@@ -85,17 +85,16 @@ class Header extends React.Component {
      
   }
 
-  _logout = () => {
+   _logout = () => {
 
      localStorage.clear();
-     localStorage.removeItem('nordic');
-     localStorage.removeItem('uid');
+     localStorage.removeItem('nordic') && localStorage.removeItem('uid');
+     //localStorage.removeItem('uid');
     // localStorage.removeItem('uid')
     //localStorage.removeItem('nordic')
     // localStorage.removeItem('nordic');
     window.location.reload()
   }
-
 
   render () {
     if (this._isLoggedIn()) {

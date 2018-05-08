@@ -1,45 +1,70 @@
 import React, {Component} from 'react';
 
+import PropTypes from 'prop-types';
 
+import {Cloudinary_Name} from '../../views/Api/';
+import {Image} from 'cloudinary-react';
+
+import moment from 'moment';
+import 'moment/locale/id';
+moment.locale('id');
 
 
 class Story extends Component {
 
 
+static propTypes = {
+
+  post: PropTypes.object,
+  refresh: PropTypes.func,
+};
+
+renderThumb(){
+     const pic = "https://res.cloudinary.com/nomadic-id/image/facebook/c_scale,r_80,w_80/" + this.props.post.user.facebookUserId + ".jpg"
+
+    if(this.props.post.user.avatar == '' ){
+
+     return(
+
+         <img src={pic} className="img-circle" style={{margin:'5px 0 0 5px', width:'33px'}} />
+
+      )
+
+    }else{
+
+        return(
+
+         <img src={this.props.post.user.avatar} className="img-circle" style={{margin:'0px 5px 0 5px', width:'30px'}} />
+
+      )
+
+    }
+
+
+  }
+
+
+
   render() {
-   
+    
+
+    const createDT = moment(this.props.post.createdAt).format('ll')//20 Mart 2017
    
     return (
          <div>
 
-          <div className="main-title">
-            <h4><strong>Latest</strong> Stories</h4>
-          </div>
+         
 
-           <div className="row">
+       
              
               <div className="col-md-4 col-sm-4">
               <div className="post-type-florida">
-                <figure className="post-image"><img src="images/post20.jpg" alt="Image" />  </figure>
-                <div className="post-content">
-                  <div className="post-metas"> <span className="likes pull-left">Maret 22</span> <span className="views pull-right">6 min read</span> </div>
+                 <figure className="post-image"><Image cloudName={Cloudinary_Name} publicId={this.props.post.imageId}  crop="thumb" height="130"  gravity="center" /></figure>
+                <div className="post-content" style={{height:'150px'}}>
+                  <div className="post-metas"> <span className="likes pull-left">{createDT}</span> <span className="views pull-right">{this.props.post.reading} min read</span> </div>
                 
-                  <h4 className="post-title"><a href="single.html">Blush be sorry no sight sang lose of hour then</a></h4>
-                  <span className="post-author"><img src="images/author-small-thumb2.jpg" alt="Image" /><a>Brand Raeburn</a></span>
-                  <span className="pull-right" style={{fontSize:'15px'}}><i className="far fa-bookmark"></i></span> 
-                </div> 
-                </div>
-              </div>
-
-
-              <div className="col-md-4 col-sm-4">
-              <div className="post-type-florida">
-                <figure className="post-image"><img src="images/post20.jpg" alt="Image" />  </figure>
-                <div className="post-content">
-                  <div className="post-metas"> <span className="likes pull-left">Maret 22</span> <span className="views pull-right">6 min read</span> </div>
-                
-                  <h4 className="post-title"><a href="single.html">Blush be sorry no sight sang lose of hour then</a></h4>
-                  <span className="post-author"><img src="images/author-small-thumb2.jpg" alt="Image" /><a>Brand Raeburn</a></span>
+                  <h4 className="post-title" style={{height:'60px'}}><a href={`/@${this.props.post.user.username}/${this.props.post.slug}`}>{this.props.post.title}</a></h4>
+                  <span className="post-author">{this.renderThumb()}<a>{this.props.post.user.member.firstName} {this.props.post.user.member.lastName}</a></span>
                   <span className="pull-right" style={{fontSize:'15px'}}><i className="far fa-bookmark"></i></span> 
                 </div> 
                 </div>
@@ -47,21 +72,11 @@ class Story extends Component {
 
 
 
-              <div className="col-md-4 col-sm-4">
-              <div className="post-type-florida">
-                <figure className="post-image"><img src="images/post20.jpg" alt="Image" />  </figure>
-                <div className="post-content">
-                  <div className="post-metas"> <span className="likes pull-left">Maret 22</span> <span className="views pull-right">6 min read</span> </div>
-                
-                  <h4 className="post-title"><a href="single.html">Blush be sorry no sight sang lose of hour then</a></h4>
-                  <span className="post-author"><img src="images/author-small-thumb2.jpg" alt="Image" /><a>Brand Raeburn</a></span>
-                  <span className="pull-right" style={{fontSize:'15px'}}><i className="far fa-bookmark"></i></span> 
-                </div> 
-                </div>
-              </div>
 
 
-           </div>
+
+
+           
 
         </div>
 

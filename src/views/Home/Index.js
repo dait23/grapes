@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 
 
-import Featured from '../../Featured'
-import Top from '../../Top'
-import  MainContent from '../../MainContent'
+import Featured from '../Featured/'
+import Top from '../Top/'
+import  MainContent from '../MainContent/'
 
 class Home extends Component {
 

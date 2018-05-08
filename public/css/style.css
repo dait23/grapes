@@ -72,7 +72,7 @@
 
 /* BODY */
 *{ outline:none !important;}
-body{ margin:0; padding:0; font-family: 'Poppins', sans-serif; font-size:14px; color:#393939;}
+body{ margin:0; padding:0; font-family: "Poppins", sans-serif; font-size:14px; color:#393939;}
 body{-webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;	-moz-osx-font-smoothing: grayscale;}
 html, body {height:100%;}
 
@@ -87,9 +87,13 @@ html, body {height:100%;}
 
 }
 
+figure.md-block-image {
+    margin: 10px 0;
+    background: none !important;
+}
 
 /* FORM ELEMENTS */
-button{ border:none;}
+button{ border:none;background: #fff}
 input[type="text"]{ width:100%; height:42px; border:1px solid #eee; padding:0 15px;}
 input[type="password"]{ width:100%; max-width:400px; height:42px; border:1px solid #eee; padding:0 15px;}
 textarea{ width:100%; height:120px; border:1px solid #eee; padding:15px;}
@@ -136,6 +140,46 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
     background-color: #fff !important;
 }
 
+
+ol.popular-list {
+    list-style-type: none;
+    list-style-type: decimal !ie; /*IE 7- hack*/
+     
+    margin: 0;
+    margin-left: 4em;
+    padding: 0;
+     
+    counter-reset: li-counter;
+}
+ol.popular-list > li{
+    position: relative;
+    margin-bottom: 40px;
+    padding-left: 0.5em;
+    min-height: 3em;
+}
+ol.popular-list > li a{
+    font-size: 14px;
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+}
+ol.popular-list > li:before {
+    position: absolute;
+    top: 0;
+    left: -2em;
+    width: 1.4em;
+    height: 1.4em;
+    font-size: 2.5em;
+    line-height: 1.2;
+    text-align: center;
+    color: #000;
+    border: 3px solid #000;
+    border-radius: 50%;
+    /* background-color: #464646; */
+    content: counter(li-counter);
+    counter-increment: li-counter;
+}
+
+
 /* LINKS */
 a{ color:#393939;}
 a:hover{ text-decoration:underline; color:#000;}
@@ -149,7 +193,7 @@ ul{ margin:0; padding:0;}
 ul li{ margin:0; padding:0; list-style:none;}
 b{ font-weight:600;}
 strong{ font-weight:600;}
-small{font-family: 'Poppins', sans-serif;}
+small{font-family: "Poppins", sans-serif;}
 address{ font-size:15px; line-height:23px;}
 .overflow-hidden{ overflow:hidden;}
 
@@ -172,13 +216,13 @@ address{ font-size:15px; line-height:23px;}
 
 
 /* LABELS */
-.label{ border-radius:0; font-family: 'Poppins', sans-serif; text-transform:uppercase; font-size:11px;} 
-.label-yellow{ border-radius:0; background:#eab950; font-family: 'Poppins', sans-serif; font-size:11px;}
-.label-red{ border-radius:0; background:#000; font-family: 'Poppins', sans-serif; font-size:11px;}
-.label-blue{border-radius:0; background:#2cccf4; font-family: 'Poppins', sans-serif; font-size:11px;}
-.label-green{border-radius:0; background:#6cd517; font-family: 'Poppins', sans-serif; font-size:11px;}
-.label-turquoise{border-radius:0; background:#0fcbcd; font-family: 'Poppins', sans-serif; font-size:11px;}
-.label-purple{border-radius:0; background:#dc28e7; font-family: 'Poppins', sans-serif; font-size:11px;}
+.label{ border-radius:0; font-family: "Poppins", sans-serif; text-transform:uppercase; font-size:11px;} 
+.label-yellow{ border-radius:0; background:#eab950; font-family: "Poppins", sans-serif; font-size:11px;}
+.label-red{ border-radius:0; background:#000; font-family: "Poppins", sans-serif; font-size:11px;}
+.label-blue{border-radius:0; background:#2cccf4; font-family: "Poppins", sans-serif; font-size:11px;}
+.label-green{border-radius:0; background:#6cd517; font-family: "Poppins", sans-serif; font-size:11px;}
+.label-turquoise{border-radius:0; background:#0fcbcd; font-family: "Poppins", sans-serif; font-size:11px;}
+.label-purple{border-radius:0; background:#dc28e7; font-family: "Poppins", sans-serif; font-size:11px;}
 
 
 /* PAGINATION */
@@ -249,7 +293,7 @@ main.move-left{-webkit-transform: translateX(-350px);-moz-transform: translateX(
 
 /* MODAL DIALOG */
 .modal-dialog{ width:500px;}
-.modal-dialog .modal-content{ box-shadow:0 0 20px rgba(0,0,0,0.3); border-radius:0;}
+.modal-dialog .modal-content{ box-shadow:0 0 0px rgba(0,0,0,0.3); border-radius:0;}
 .modal-dialog .close{ width:40px; height:40px; position:absolute; z-index:2; right:-40px; top:0; background:#000; color:#fff; opacity:1; text-shadow:none;}
 
 
@@ -267,7 +311,10 @@ main.move-left{-webkit-transform: translateX(-350px);-moz-transform: translateX(
 .main-title h4{float:left;font-size:19px; padding:12px 0; margin-bottom:12px; color:#000;}
 .main-title h4 strong{ font-weight:600;}
 
+.modal-content{
 
+	border: 0px;
+}
 
 /* SIDE MENU */
 .side-menu{ width:350px; height:100%; position:fixed; right:0; top:0; background:#393939; padding:30px; overflow-y:scroll !important;}
@@ -543,18 +590,24 @@ background-image: linear-gradient(left, #DA2B4C 0%,#DA2B4C 12.5%,#e37f52 12.5%,#
 
 /* CUSTOMIZED DROPDOWN MENU */
 .dropdown{ position:relative;}
-.dropdown .dropdown-menu{border-radius:0; top:100% !important; border:1px solid rgba(0,0,0,0.05); padding:0 15px; box-shadow:0 0 12px rgba(0,0,0,0.1); margin-top:0 !important;}
+.dropdown .dropdown-menu{border-radius:0; top:1% !important; border:1px solid rgba(0,0,0,0.05); padding:10px 5px;  margin-top:0 !important;min-width: 120px;text-align: left;margin-left: 70px;}
 .dropdown .dropdown-menu li{ width:100%; float:left; margin:0 !important; border-bottom:1px solid #eee; position:relative;}
 .dropdown .dropdown-menu li:last-child{ border-bottom:0;}
 .dropdown .dropdown-menu li a{ width:100%; line-height:30px !important; color:#393939 !important; font-weight:400 !important; padding:3px 0;}
 .dropdown .dropdown-menu li a:hover{ background:none; color:#000 !important;}
-.dropdown .dropdown-submenu{ min-width:160px; position:absolute; left:130px; background:#fff; border:1px solid rgba(0,0,0,0.05); padding:0 15px; box-shadow:0 0 12px rgba(0,0,0,0.1);}
+.dropdown .dropdown-submenu{ min-width:100px !important; position:absolute; left:10px; background:#fff; border:1px solid rgba(0,0,0,0.05); padding:10px 5px; }
 .navigation ul ul{ display:none;}
 .navigation ul li:hover ul{ display:block;}
 .navigation ul li:hover ul .dropdown-submenu{ display:none;}
 .navigation ul li:hover ul li:hover .dropdown-submenu{ display:block;}
 
+@media (min-width: 768px){
+.navbar-nav>li>a {
+    padding-top: 10px; 
+   padding-bottom: 0px; 
+}
 
+}
 
 /* ADS AREA */
 .ads-area{ width:100%; float:left; margin:20px 0; text-align:center;}
@@ -574,7 +627,7 @@ background-image: linear-gradient(left, #DA2B4C 0%,#DA2B4C 12.5%,#e37f52 12.5%,#
 .highlight-news .PostSlider-Button{ color:#000;font-family:'Roboto', sans-serif; border:1px solid #eee;}
 .highlight-news .Newspaper-Button{color:#fff; line-height:50px; padding:0 35px; font-family:'Roboto', sans-serif; border:1px solid #fff;}
 .highlight-news .erinyen .tp-tab-title{ color:#f3f2bd; font-family:'Roboto', sans-serif;}
-.highlight-news .erinyen .tp-tab-desc{ font-family:'Poppins', sans-serif;}
+.highlight-news .erinyen .tp-tab-desc{ font-family:"Poppins", sans-serif;}
 
 
 
@@ -646,8 +699,8 @@ background-image: linear-gradient(left, #DA2B4C 0%,#DA2B4C 12.5%,#e37f52 12.5%,#
 
 
 
-/* CONTENT  Update*/ 
-.content{ width:100%; float:left; position:relative; margin-bottom:30px;margin-top: 70px;} 
+/* CONTENT */
+.content{ width:100%; float:left; position:relative; margin-bottom:30px;}
 .content .main-title{ width:100%; float:left; border-bottom:1px solid #eee;}
 
 
@@ -658,27 +711,27 @@ background-image: linear-gradient(left, #DA2B4C 0%,#DA2B4C 12.5%,#e37f52 12.5%,#
 .custom-5cols ul li{ width:20%; float:left; padding:0 10px;}
 
 
-/* POST TYPE - FLORIDA  --update*/
+/* POST TYPE - FLORIDA */
 .post-type-florida{ width:100%; float:left; margin-bottom:20px;}
 .post-type-florida *{-webkit-transition: .25s ease-in-out;-moz-transition: .25s ease-in-out;-ms-transition: .25s ease-in-out; -o-transition: .25s ease-in-out; transition: .25s ease-in-out;}
-.post-type-florida .post-image{ width:100%; float:left; margin-bottom:5px; overflow:hidden; position:relative;}
+.post-type-florida .post-image{ width:100%; float:left; margin-bottom:0px; overflow:hidden; position:relative;}
 .post-type-florida .post-image:after{content:''; width:100%; height:100%; position:absolute; left:0; top:0;  opacity:0;}
 .post-type-florida .post-image:after{-webkit-transition: .25s ease-in-out;-moz-transition: .25s ease-in-out;-ms-transition: .25s ease-in-out; -o-transition: .25s ease-in-out; transition: .25s ease-in-out;}
 .post-type-florida .post-image img{ width:100%; float:left;}
 .post-type-florida .post-image .label{ position:absolute; left:0; bottom:-20px; z-index:2;}
-.post-type-florida .post-content{ width:100%; float:left;}
-.post-type-florida .post-content .post-metas{ width:100%; float:left; color:#9d9d9d; font-family: 'Poppins', sans-serif; font-size:11px; }
+.post-type-florida .post-content{ width:100%; float:left;padding-top: 10px;}
+.post-type-florida .post-content .post-metas{ width:100%; float:left; color:#9d9d9d; font-family: "Poppins", sans-serif; font-size:11px; }
 .post-type-florida .post-content .post-metas img{ float:left; margin-top:2px; margin-right:6px;}
 .post-type-florida .post-content .post-metas .likes{ float:left; margin-right:20px;}
 .post-type-florida .post-content .post-metas .views{ float:left;}
-.post-type-florida .post-content .post-title{ width:100%; float:left; font-size:16px; line-height:22px; font-weight:600; margin-top:5px; margin-bottom:15px;}
+.post-type-florida .post-content .post-title{ width:100%; float:left; font-size:16px; line-height:22px; font-weight:600; margin-top:5px; margin-bottom:15px}
 .post-type-florida .post-content .post-title a{ color:#393939;}
-.post-type-florida .post-content .post-author{ float:left; font-family: 'Poppins', sans-serif; font-size:11px;}
+.post-type-florida .post-content .post-author{ float:left; font-family: "Poppins", sans-serif; font-size:11px;}
 .post-type-florida .post-content .post-author img{ width:30px; float:left; border-radius:50%; margin-right:6px;}
 .post-type-florida .post-content .post-author a{ line-height:22px; float:left; color:#000; font-size: 12px;}
-.post-type-florida .post-content .post-date{ float:right; font-family: 'Poppins', sans-serif; font-size:11px; color:#9d9d9d; line-height:22px; margin-left:3px;}
+.post-type-florida .post-content .post-date{ float:right; font-family: "Poppins", sans-serif; font-size:11px; color:#9d9d9d; line-height:22px; margin-left:3px;}
 .post-type-florida .post-content .post-rating{ width:100%; float:left; margin:10px 0;}
-.post-type-florida .post-content p{ width:100%; float:left; color:#6d6d6d; font-size: 14px; /*font-family: 'Muli', sans-serif;*/}
+.post-type-florida .post-content p{ width:100%; float:left; color:#6d6d6d; font-size: 15px; font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;}
 .post-type-florida:hover .post-image:after{ opacity:1;}
 .post-type-florida:hover .label{ bottom:10px;}
 
@@ -687,22 +740,22 @@ background-image: linear-gradient(left, #DA2B4C 0%,#DA2B4C 12.5%,#e37f52 12.5%,#
 /* POST TYPE - NEW YORK */
 .post-type-newyork{ width:100%; float:left; margin-bottom:20px;}
 .post-type-newyork *{-webkit-transition: .25s ease-in-out;-moz-transition: .25s ease-in-out;-ms-transition: .25s ease-in-out; -o-transition: .25s ease-in-out; transition: .25s ease-in-out;}
-.post-type-newyork .post-image{ width:50%; float:left; padding-right:15px; overflow:hidden; position:relative;}
+.post-type-newyork .post-image{ /*width:50%;*/ float:left; padding-right:25px; overflow:hidden; position:relative;}
 .post-type-newyork .post-image img{ width:100%; float:left;}
 .post-type-newyork .post-image .label{ position:absolute; left:0; bottom:10px; z-index:2;}
-.post-type-newyork .post-content{ width:50%; float:left;}
-.post-type-newyork .post-content .post-metas{ width:100%; float:left; color:#393939; font-family: 'Poppins', sans-serif; font-size:11px; }
+.post-type-newyork .post-content{ width:65%; float:left;}
+.post-type-newyork .post-content .post-metas{ width:100%; float:left; color:#393939; font-family: "Poppins", sans-serif; font-size:11px; }
 .post-type-newyork .post-content .post-metas img{ float:left; margin-top:2px; margin-right:6px;}
 .post-type-newyork .post-content .post-metas .likes{ float:left; margin-right:20px;}
 .post-type-newyork .post-content .post-metas .views{ float:left;}
 .post-type-newyork .post-content .post-title{ width:100%; float:left; font-size:16px; line-height:22px; font-weight:600; margin-top:-5px; margin-bottom:5px;}
 .post-type-newyork .post-content .post-title a{ color:#393939;}
-.post-type-newyork .post-content .post-author{ float:left; font-family: 'Poppins', sans-serif; font-size:11px;}
+.post-type-newyork .post-content .post-author{ float:left; font-family: "Poppins", sans-serif; font-size:11px;}
 .post-type-newyork .post-content .post-author img{ width:25px; float:left; border-radius:50%; margin-right:6px;}
 .post-type-newyork .post-content .post-author a{ line-height:22px; float:left; color:#000; text-transform:uppercase;}
-.post-type-newyork .post-content .post-date{ float:left; font-family: 'Poppins', sans-serif; font-size:11px; color:#9d9d9d; line-height:22px; margin-left:3px;}
+.post-type-newyork .post-content .post-date{ float:left; font-family: "Poppins", sans-serif; font-size:11px; color:#9d9d9d; line-height:22px; margin-left:3px;}
 .post-type-newyork .post-content .post-rating{ width:100%; float:left; margin:10px 0;}
-.post-type-newyork .post-content p{ width:100%; float:left; color:#6d6d6d; /*font-family: 'Muli', sans-serif;*/ font-size: 13px;}
+.post-type-newyork .post-content p{ margin: 10px 0;width:100%; float:left; color:#6d6d6d; font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif; font-size: 13.3px;}
 
 
 
@@ -713,7 +766,7 @@ background-image: linear-gradient(left, #DA2B4C 0%,#DA2B4C 12.5%,#e37f52 12.5%,#
 .post-type-housten .post-image img{ width:100%; float:left;}
 .post-type-housten .post-image .label{ position:absolute; left:0; bottom:10px; z-index:2;}
 .post-type-housten .post-content{ width:50%; float:left;}
-.post-type-housten .post-content .post-metas{ width:100%; float:left; color:#393939; font-family: 'Poppins', sans-serif; font-size:11px; }
+.post-type-housten .post-content .post-metas{ width:100%; float:left; color:#393939; font-family: "Poppins", sans-serif; font-size:11px; }
 .post-type-housten .post-content .post-metas img{ float:left; margin-top:2px; margin-right:6px;}
 .post-type-housten .post-content .post-metas .likes{ float:left; margin-right:20px;}
 .post-type-housten .post-content .post-metas .views{ float:left;}
@@ -728,23 +781,42 @@ background-image: linear-gradient(left, #DA2B4C 0%,#DA2B4C 12.5%,#e37f52 12.5%,#
 .post-type-california{ width:100%; float:left; margin-bottom:20px;}
 .post-type-california *{-webkit-transition: .25s ease-in-out;-moz-transition: .25s ease-in-out;-ms-transition: .25s ease-in-out; -o-transition: .25s ease-in-out; transition: .25s ease-in-out;}
 .post-type-california .post-image{ width:35%; float:left; margin-bottom:15px; overflow:hidden; position:relative;}
+.post-type-california .post-image-draft{ width:auto; float:left; margin-bottom:15px; overflow:hidden; position:relative;}
 .post-type-california .post-image:after{content:''; width:100%; height:100%; position:absolute; left:0; top:0;  opacity:0;}
 .post-type-california .post-image:after{-webkit-transition: .25s ease-in-out;-moz-transition: .25s ease-in-out;-ms-transition: .25s ease-in-out; -o-transition: .25s ease-in-out; transition: .25s ease-in-out;}
 .post-type-california .post-image img{ width:100%; float:left;}
 .post-type-california .post-image .label{ position:absolute; left:0; bottom:-20px; z-index:2;}
-.post-type-california .post-content{ width:55%; float:left; padding-left:15px;}
-.post-type-california .post-content .post-metas{ width:100%; float:left; color:#393939; font-family: 'Poppins', sans-serif; font-size:11px; }
+.post-type-california .post-content{ width:55%; float:left; padding-left:25px;}
+.post-type-california .post-content-page{ width:95%; float:left; padding-left:0px;}
+
+
+.post-type-california .post-content-page .post-metas{ width:100%; float:left; color:#393939; font-family: "Poppins", sans-serif; font-size:11px; }
+.post-type-california .post-content-page .post-metas img{ float:left; margin-top:2px; margin-right:6px;}
+.post-type-california .post-content-page .post-metas .likes{ float:left; margin-right:20px;}
+.post-type-california .post-content-page .post-metas .views{ float:left;}
+.post-type-california .post-content-page .post-title{ width:100%; float:left; font-size:18px; line-height:1.5; font-weight:600; margin-top:0px; margin-bottom:5px; font-family: "Poppins", sans-serif;}
+.post-type-california .post-content-page .post-title a{ color:#393939;}
+.post-type-california .post-content-page .post-author{ float:left; font-family: "Poppins", sans-serif; font-size:11px;}
+.post-type-california .post-content-page .post-author img{ width:32px; float:left; border-radius:50%; margin-right:6px;}
+.post-type-california .post-content-page .post-author a{ line-height:32px; float:left; color:#000; text-transform:uppercase;}
+.post-type-california .post-content-page .post-date{ float:left; font-family: "Poppins", sans-serif; font-size:11px; color:#9d9d9d; line-height:32px; margin-left:10px;}
+.post-type-california .post-content-page .post-rating{ width:100%; float:left; margin:10px 0;}
+.post-type-california .post-content-page p{margin-top: 0px;margin-bottom: 10px; width:100%; float:left; color:#6d6d6d;line-height: 1.5; font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif; font-size: 16px;}
+
+
+.post-type-california .post-content .post-metas{ width:100%; float:left; color:#393939; font-family: "Poppins", sans-serif; font-size:11px; }
 .post-type-california .post-content .post-metas img{ float:left; margin-top:2px; margin-right:6px;}
 .post-type-california .post-content .post-metas .likes{ float:left; margin-right:20px;}
 .post-type-california .post-content .post-metas .views{ float:left;}
-.post-type-california .post-content .post-title{ width:100%; float:left; font-size:18px; line-height:1.5; font-weight:600; margin-top:0px; margin-bottom:5px; font-family: 'Poppins', sans-serif;}
+.post-type-california .post-content .post-title{ width:100%; float:left; font-size:18px; line-height:1.5; font-weight:600; margin-top:0px; margin-bottom:5px; font-family: "Poppins", sans-serif;}
 .post-type-california .post-content .post-title a{ color:#393939;}
-.post-type-california .post-content .post-author{ float:left; font-family: 'Poppins', sans-serif; font-size:11px;}
+.post-type-california .post-content .post-author{ float:left; font-family: "Poppins", sans-serif; font-size:11px;}
 .post-type-california .post-content .post-author img{ width:32px; float:left; border-radius:50%; margin-right:6px;}
 .post-type-california .post-content .post-author a{ line-height:32px; float:left; color:#000; text-transform:uppercase;}
-.post-type-california .post-content .post-date{ float:left; font-family: 'Poppins', sans-serif; font-size:11px; color:#9d9d9d; line-height:32px; margin-left:10px;}
+.post-type-california .post-content .post-date{ float:left; font-family: "Poppins", sans-serif; font-size:11px; color:#9d9d9d; line-height:32px; margin-left:10px;}
 .post-type-california .post-content .post-rating{ width:100%; float:left; margin:10px 0;}
-.post-type-california .post-content p{ width:100%; float:left; color:#6d6d6d;line-height: 1.5; font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif; font-size: 16px;}
+.post-type-california .post-content p{margin-top: 10px;margin-bottom: 20px; width:100%; float:left; color:#6d6d6d;line-height: 1.5; font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif; font-size: 16px;}
+
 .post-type-california:hover .post-image:after{ opacity:1;}
 .post-type-california:hover .label{ bottom:10px;}
 
@@ -760,10 +832,10 @@ background-image: linear-gradient(left, #DA2B4C 0%,#DA2B4C 12.5%,#e37f52 12.5%,#
 .post-type-nevada .post-content{ width:100%; position:absolute; left:0; bottom:0; padding:20px;}
 .post-type-nevada .post-content .post-title{ font-size:16px; font-weight:600; line-height:20px; margin-bottom:10px;}  
 .post-type-nevada .post-content .post-title a{color:#fff;}
-.post-type-nevada .post-content .post-author{ float:left; font-family: 'Poppins', sans-serif; font-size:11px;}
+.post-type-nevada .post-content .post-author{ float:left; font-family: "Poppins", sans-serif; font-size:11px;}
 .post-type-nevada .post-content .post-author img{ width:32px; float:left; border-radius:50%; margin-right:6px;}
 .post-type-nevada .post-content .post-author a{ line-height:32px; float:left; color:#fff; text-transform:uppercase;}
-.post-type-nevada .post-content .post-date{ float:left; font-family: 'Poppins', sans-serif; font-size:11px; color:#fff; line-height:32px; margin-left:3px;}
+.post-type-nevada .post-content .post-date{ float:left; font-family: "Poppins", sans-serif; font-size:11px; color:#fff; line-height:32px; margin-left:3px;}
 .post-type-nevada:hover .post-image:after{ opacity:0.4;}
 
 
@@ -777,10 +849,10 @@ background-image: linear-gradient(left, #DA2B4C 0%,#DA2B4C 12.5%,#e37f52 12.5%,#
 .post-type-kansas .post-content{ width:100%; position:absolute; left:0; bottom:0; padding:20px;}
 .post-type-kansas .post-content .post-title{ font-size:16px; font-weight:600; line-height:20px; margin-bottom:10px;}  
 .post-type-kansas .post-content .post-title a{color:#fff;}
-.post-type-kansas .post-content .post-author{ float:left; font-family: 'Poppins', sans-serif; font-size:11px;}
+.post-type-kansas .post-content .post-author{ float:left; font-family: "Poppins", sans-serif; font-size:11px;}
 .post-type-kansas .post-content .post-author img{ width:32px; float:left; border-radius:50%; margin-right:6px;}
 .post-type-kansas .post-content .post-author a{ line-height:32px; float:left; color:#fff; text-transform:uppercase;}
-.post-type-kansas .post-content .post-date{ float:left; font-family: 'Poppins', sans-serif; font-size:11px; color:#fff; line-height:32px; margin-left:3px;}
+.post-type-kansas .post-content .post-date{ float:left; font-family: "Poppins", sans-serif; font-size:11px; color:#fff; line-height:32px; margin-left:3px;}
 .post-type-kansas:hover .post-image:after{ opacity:0.1;}
 
 
@@ -812,22 +884,25 @@ background-image: linear-gradient(left, #DA2B4C 0%,#DA2B4C 12.5%,#e37f52 12.5%,#
 .home-video .video-caption h5{ font-size:15px; font-weight:600; margin-bottom:5px;}
 .home-video .video-caption small{ font-size:11px; color:#fff;}
 .home-video .video-caption small img{ float:left; margin-right:6px; margin-top:2px; filter: brightness(100); -webkit-filter: brightness(100);}
-.home-video .video-caption .video-metas{ width:100%; float:left; color:#fff; font-family: 'Poppins', sans-serif; font-size:11px; margin-bottom:10px;}
+.home-video .video-caption .video-metas{ width:100%; float:left; color:#fff; font-family: "Poppins", sans-serif; font-size:11px; margin-bottom:10px;}
 .home-video .video-caption .video-metas img{ float:left; margin-top:2px; margin-right:6px;  filter: brightness(100); -webkit-filter: brightness(100);}
 .home-video .video-caption .video-metas .likes{ float:left; margin-right:20px;}
 .home-video .video-caption .video-metas .views{ float:left;}
 
-
+.rw-widget-picker>*{
+	height: 40px !important;
+	padding: 10px 5px;
+}
 
 
 /* ARTICLE DETAIL - NEWYORK */
-.article-detail-newyork{ width:100%; float:left; padding-top:30px;}
+.article-detail-newyork{ width:100%;padding-top:100px;}
 .article-detail-newyork h1.posttitle {
     font-weight: 600;
     margin-bottom: 1em;
-    margin-top: 2em;
+    margin-top: 0em;
     line-height: 1.2;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
 }
 
 .alertbar {
@@ -852,21 +927,6 @@ background-image: linear-gradient(left, #DA2B4C 0%,#DA2B4C 12.5%,#e37f52 12.5%,#
     font-weight: 600;
     text-transform: uppercase;
 }
-
-.btn.login {
-    background-color: #fff;
-    border-color: #555;
-    color: #555;
-    fill: rgba(255,255,255,1);
-    border-radius: 5px;
-    font-size: 1em;
-    margin-left: 10px;
-    font-weight: 600;
-    margin-top: 10px;
-    padding: 5px 20px
-}
-
-
 ul.tags {
     list-style: none;
     padding-left: 0;
@@ -899,52 +959,67 @@ a, a:hover {
 }
 
 .article-detail-newyork .post-author-info-top .author-name{ font-weight:600; margin-top:5px;}
-.article-detail-newyork .post-author-info-top .author-info{ font-size:12px; line-height:1.5; margin-bottom:0; font-family: 'Poppins', sans-serif;margin-top: -5px;}
-.article-detail-newyork .post-author-info-top img {
+.article-detail-newyork .post-author-info-top .author-info{ font-size:12px; line-height:1.5; margin-bottom:0; font-family: "Poppins", sans-serif;margin-top: -5px;}
+/*.article-detail-newyork .post-author-info-top img {
     width: 45px;
     border-radius: 50%;
     float: left;
     margin-right: 10px;
-}
+}*/
 
 .bg-gray{width: 100%; min-height: auto; background: #FAFAFA;padding-top: 20px; padding-bottom: 100px;}
-.post-content img{ margin-bottom: 1em; }
+.post-content img{ margin-bottom: 1em; width: 100%; }
 .article-detail-newyork .big-post-image{ width:100%; float:left; margin:-50px 0 50px 0; position:relative;min-height: 350px; background: #fafafa;}
+.parallax {
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    position: relative;
+    z-index: 99
+}
+
+.article-detail-newyork .big-post-image:before{
+  position: absolute;
+  content:" ";
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  display: block;
+  z-index:0;
+   background-position: 50% 50%;
+  background-color: rgba(0,0,0,0.30);
+}
+
+
+.article-detail-newyork .big-post-imagex{ width:100%; float:left; margin:-50px 0 50px 0; position:relative;min-height: 350px; background: #fafafa;}
+.article-detail-newyork .big-post-imagex:after{content:''; width:100%; height:100%; position:absolute; left:0; top:0; }
 .article-detail-newyork .big-post-image:after{content:''; width:100%; height:100%; position:absolute; left:0; top:0; }
 .article-detail-newyork .big-post-image .image{ width:100%;}
-.article-detail-newyork .big-post-image .over-content{ width:100%; height:100%; position:absolute; left:0; top:0; z-index:2; text-align:center;color: #000; padding-top: 100px;}
+.article-detail-newyork .big-post-imagex .image{ width:100%;}
+.article-detail-newyork .big-post-image .over-content{ width:100%; height:100%; position:absolute; left:0; top:0; z-index:2; text-align:center;color: #000}
+.article-detail-newyork .big-post-imagex .over-content{ width:100%; height:100%; position:absolute; left:0; top:0; z-index:2; text-align:center;color: #000}
 .article-detail-newyork .post-content{ width:100%; float:left; padding-bottom: 00px; padding-top: 10px; }
-
-
-.article-detail-newyork .post-content{ width:100%; float:left; padding-bottom: 00px; padding-top: 10px; }
-
-.article-detail-newyork .new-content{ width:100%; float:left; padding-bottom: 00px; padding-top: 50px; }
-
-
-.article-detail-newyork .form-story{ width:100%; float:left; padding-bottom: 00px; padding-top: 30px; }
-
-
-
 .article-detail-newyork .big-post-image .post-title{ font-size:50px; font-weight:600; color:#fff; padding:0 10%;}
 .article-detail-newyork .post-subtitle{ font-size:22px; font-weight:600; margin-bottom:20px;}
 .article-detail-newyork .post-lead{ width:100%; float:left; font-size:1.9em; font-weight:400; line-height:1.5; margin-bottom:20px;}
 .article-detail-newyork p:first-of-type {width:auto; float:left; font-size:1.9em; font-weight:400; line-height:1.5; margin-bottom:20px;}
 .article-detail-newyork p { width:auto; float:left; font-size:23px; font-weight:300; line-height:1.5; margin-bottom:20px;color: rgba(0,0,0,.9); font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;}
-.article-detail-newyork .post-metas{ width:100%; float:left; color:#888; font-family: 'Poppins', sans-serif; font-size:11px; margin-top:10px; }
-.article-detail-newyork .post-metas p{ width:100%; float:left; color:#666; font-family: 'Poppins', sans-serif; font-size:12px; margin-top:0px; }
+.article-detail-newyork .post-metas{ width:100%; float:left; color:#888; font-family: "Poppins", sans-serif; font-size:11px; margin-top:10px; }
+.article-detail-newyork .post-metas p{ width:100%; float:left; color:#666; font-family: "Poppins", sans-serif; font-size:12px; margin-top:0px; }
+.article-detail-newyork .post-metasx p{ width:100%; float:left; color:#fff; font-family: "Poppins", sans-serif; font-size:12px; margin-top:0px; }
 .article-detail-newyork .post-metas img{ float:left; margin-top:2px; margin-right:6px; filter: brightness(100); -webkit-filter: brightness(100);}
 .article-detail-newyork .post-metas .likes{ display:inline-block;  margin-right:20px;}
 .article-detail-newyork .post-metas .views{ display:inline-block;}
-.article-detail-newyork .post-author{ display:inline-block; font-family: 'Poppins', sans-serif; font-size:11px;}
+.article-detail-newyork .post-author{ display:inline-block; font-family: "Poppins", sans-serif; font-size:11px;}
 .article-detail-newyork .post-author img{ width:80px; display:inline-block; border-radius:50%; margin-bottom:12px;}
 .article-detail-newyork .post-author a{ display:block; color:#000;  font-size:20px; font-weight: 600;}
-.article-detail-newyork .post-topic{ display:inline-block; font-family: 'Poppins', sans-serif; font-size:11px; border:2px solid #000;padding: 10px;width: 100%}
-.article-detail-newyork .post-topic a{ display:block; color:#000;  font-size:20px; font-weight: 600; text-transform: uppercase;}
-.article-detail-newyork .post-date{ width:auto; float:left; font-family: 'Poppins', sans-serif; font-size:13px; color:#9d9d9d; line-height:50px; margin-left:3px;}
+.article-detail-newyork .post-authorx a{ display:block; color:#fff;  font-size:20px; font-weight: 600;}
+.article-detail-newyork .post-authorx img{ width:60px; display:inline-block; border-radius:50%; margin-bottom:12px;}
+.article-detail-newyork .post-date{ width:auto; float:left; font-family: "Poppins", sans-serif; font-size:13px; color:#9d9d9d; line-height:50px; margin-left:3px;}
 
 /*.article-detail-newyork p{ font-size:14px; line-height:22px; margin-bottom:15px;}*/
 .article-detail-newyork blockquote{ border-left:none; padding-left:0; color:#999; font-size:20px;}
-.article-detail-newyork blockquote:before{content:"\f347"; float:left; font-family:ionicons; background:#555; color:#fff; padding:15px 20px; margin-right:10px;}
+.article-detail-newyork blockquote:before{content:"\f347"; float:left; font-family:ionicons; background:#000; color:#fff; padding:15px 20px; margin-right:10px;}
 .article-detail-newyork .custom-list{ width:100%; float:left; margin-bottom:30px; padding-left:20px;}
 .article-detail-newyork .custom-list li{ width:100%; float:left; margin-bottom:10px;}
 .article-detail-newyork .custom-list li:before{content:''; width:8px; height:3px; background:#000; float:left; border-radius:3px; margin-top:6px; margin-right:10px;}
@@ -973,7 +1048,7 @@ a, a:hover {
 .article-detail-newyork .post-author-info{ width:100%; float:left; border-top: 1px solid #eee;  padding:15px; margin-bottom:0px;margin-top: 50px;}
 .article-detail-newyork .post-author-info img{ width:60px; border-radius:50%; float:left; margin-right:10px;}
 .article-detail-newyork .post-author-info .author-name{ font-weight:600; margin-top:5px;}
-.article-detail-newyork .post-author-info .author-info{ font-size:12px; line-height:1.5; margin-bottom:0; font-family: 'Poppins', sans-serif;}
+.article-detail-newyork .post-author-info .author-info{ font-size:12px; line-height:1.5; margin-bottom:0; font-family: "Poppins", sans-serif;}
 .article-detail-newyork .related-articles{ width:100%; float:left;}
 
 
@@ -985,14 +1060,14 @@ a, a:hover {
 .article-detail-florida .post-title{ font-size:32px; font-weight:600;}
 .article-detail-florida .post-subtitle{ font-size:22px; font-weight:600; margin-bottom:20px;}
 .article-detail-florida .post-lead{ width:100%; float:left; font-size:20px; font-weight:300; line-height:27px; margin-bottom:20px;}
-.article-detail-florida .post-metas{ width:100%; float:left; color:#393939; font-family: 'Poppins', sans-serif; font-size:11px; margin-top:10px; }
+.article-detail-florida .post-metas{ width:100%; float:left; color:#393939; font-family: "Poppins", sans-serif; font-size:11px; margin-top:10px; }
 .article-detail-florida .post-metas img{ float:left; margin-top:2px; margin-right:6px;}
 .article-detail-florida .post-metas .likes{ float:left; margin-right:20px;}
 .article-detail-florida .post-metas .views{ float:left;}
-.article-detail-florida .post-author{ float:left; font-family: 'Poppins', sans-serif; font-size:11px;}
+.article-detail-florida .post-author{ float:left; font-family: "Poppins", sans-serif; font-size:11px;}
 .article-detail-florida .post-author img{ width:50px; float:left; border-radius:50%; margin-right:12px;}
 .article-detail-florida .post-author a{ line-height:50px; float:left; color:#000; text-transform:uppercase; font-size:13px;}
-.article-detail-florida .post-date{ float:left; font-family: 'Poppins', sans-serif; font-size:13px; color:#9d9d9d; line-height:50px; margin-left:3px;}
+.article-detail-florida .post-date{ float:left; font-family: "Poppins", sans-serif; font-size:13px; color:#9d9d9d; line-height:50px; margin-left:3px;}
 .article-detail-florida p{ font-size:14px; line-height:22px; margin-bottom:15px;}
 .article-detail-florida blockquote{ border-left:none; padding-left:0; color:#999; font-size:20px;}
 .article-detail-florida blockquote:before{content:"\f347"; float:left; font-family:ionicons; background:#000; color:#fff; padding:15px 20px; margin-right:10px;}
@@ -1039,14 +1114,14 @@ a, a:hover {
 .article-detail-california .post-title{ font-size:32px; font-weight:600;}
 .article-detail-california .post-subtitle{ font-size:22px; font-weight:600; margin-bottom:20px;}
 .article-detail-california .post-lead{ width:100%; float:left; font-size:20px; font-weight:300; line-height:27px; margin-bottom:20px;}
-.article-detail-california .post-metas{ width:100%; float:left; color:#393939; font-family: 'Poppins', sans-serif; font-size:11px; margin-top:10px; }
+.article-detail-california .post-metas{ width:100%; float:left; color:#393939; font-family: "Poppins", sans-serif; font-size:11px; margin-top:10px; }
 .article-detail-california .post-metas img{ float:left; margin-top:2px; margin-right:6px;}
 .article-detail-california .post-metas .likes{ float:left; margin-right:20px;}
 .article-detail-california .post-metas .views{ float:left;}
-.article-detail-california .post-author{ float:left; font-family: 'Poppins', sans-serif; font-size:11px;}
+.article-detail-california .post-author{ float:left; font-family: "Poppins", sans-serif; font-size:11px;}
 .article-detail-california .post-author img{ width:50px; float:left; border-radius:50%; margin-right:12px;}
 .article-detail-california .post-author a{ line-height:50px; float:left; color:#000; text-transform:uppercase; font-size:13px;}
-.article-detail-california .post-date{ float:left; font-family: 'Poppins', sans-serif; font-size:13px; color:#9d9d9d; line-height:50px; margin-left:3px;}
+.article-detail-california .post-date{ float:left; font-family: "Poppins", sans-serif; font-size:13px; color:#9d9d9d; line-height:50px; margin-left:3px;}
 .article-detail-california p{ font-size:14px; line-height:22px; margin-bottom:15px;}
 .article-detail-california blockquote{ border-left:none; padding-left:0; color:#999; font-size:20px;}
 .article-detail-california blockquote:before{content:"\f347"; float:left; font-family:ionicons; background:#000; color:#fff; padding:15px 20px; margin-right:10px;}
@@ -1128,11 +1203,11 @@ a, a:hover {
 
 
 /* POPULAR CELEBRETIES */
-.popular-celebreties{ width:100%; float:left; padding:30px 20px; padding-bottom:20px; margin:0px 0; background:#FAFAFA;}
+.popular-celebreties{ width:100%; float:left; padding:30px 20px; padding-bottom:20px; margin:0px 0 40px 0; background:#FAFAFA;}
 .popular-celebreties .title{ font-size:20px; font-weight:600; margin-top:0; margin-bottom:20px;}
 .popular-celebreties figure{ width:100%; float:left; position:relative;}
 .popular-celebreties figure img{ width:50px; float:left; border-radius:50%; margin-right:20px;}
-.popular-celebreties figure span{ width:23px; height:23px; line-height:23px; position:absolute; left:60px; top:23px; background:#000; font-family: 'Poppins', sans-serif; font-size:11px; text-align:center; border-radius:20px; color:#fff;}
+.popular-celebreties figure span{ width:23px; height:23px; line-height:23px; position:absolute; left:60px; top:23px; background:#000; font-family: "Poppins", sans-serif; font-size:11px; text-align:center; border-radius:20px; color:#fff;}
 .popular-celebreties figure figcaption{ display:block;}
 .popular-celebreties figure figcaption h4{ font-weight:600; color:#000;}
 .popular-celebreties .post{ width:100%; float:left; padding-bottom:20px; margin-bottom:0px; border-bottom:1px solid rgba(255,255,255,0.2);}
@@ -1263,8 +1338,8 @@ a, a:hover {
 /* STICKY SIDEBAR */
 .candy-wrapper { max-width:1200px; margin:0 auto;position:relative;}
 .main {display:inline-block;width:75%;position:relative;z-index:1;vertical-align:top; padding-right:20px;}
-.single {display:inline-block;width:100%;position:relative;z-index:1;vertical-align:top; padding-right:20px;}
-.sidebar {display:inline-block; width:25%; float:right; vertical-align:top; padding:30px 0; padding-left:20px;}
+.single {display:inline-block;width:100%;position:relative;z-index:1;vertical-align:top; padding-right:20px;margin-top: 30px;}
+.sidebar {display:inline-block; width:25%; float:right; vertical-align:top; padding:30px 0; padding-left:0px;}
 .wrap { max-width:1200px; display:inline; top:0; z-index:0; vertical-align:top;}
 .sticky .wrap  {position:fixed; display:block;}
 .at-bottom .wrap  {position:absolute;bottom:0;top:inherit;}

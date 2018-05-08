@@ -1,4 +1,7 @@
 import React, {Component} from 'react';
+import { Link, withRouter } from 'react-router-dom';
+import { graphql } from 'react-apollo'
+import gql from 'graphql-tag'
 
 
 class Featured extends Component {
@@ -11,7 +14,7 @@ class Featured extends Component {
       
      
            <div className="row">
-	        <div className="col-xs-12">
+	        <div className="col-xs-12" style={{paddingTop:'70px'}}>
 	          <div className="main-title">
 	            <h4><strong>Featured</strong> Stories</h4>
 	          </div>
@@ -77,6 +80,31 @@ class Featured extends Component {
 }
 
 
+const FeaturedLeftQuery = gql`query allPosts {
+  allPosts(filter: {
+    AND: [{
+      isPublished: true
+    }, {
+      isFeatured: true
+    }]
+  },orderBy: createdAt_DESC, first:1) {
+        id
+        title
+        slug
+        headline
+        imageId
+        reading
+        imageUrl
+        user{
+           username
+           avatar
+        }
+     }
+}`
 
 
-export default Featured;
+
+
+const ListPageWithData = graphql(FeaturedLeftQuery)(Featured)
+
+export default ListPageWithData

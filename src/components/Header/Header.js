@@ -104,8 +104,9 @@ class Header extends React.Component {
 
       return this.renderLoggedIn()
     } else {
-      localStorage.removeItem('uid')
+      
       return this.renderLoggedOut()
+      localStorage.removeItem('uid');
     }
 
 

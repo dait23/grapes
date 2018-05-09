@@ -25,7 +25,7 @@ renderThumb(){
 
      return(
 
-         <img src={pic} className="img-circle" style={{margin:'5px 0 0 5px', width:'33px'}} />
+         <img src={pic} className="img-circle" style={{margin:'0px 8px 0 5px', width:'33px'}} />
 
       )
 

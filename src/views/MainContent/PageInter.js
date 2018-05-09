@@ -3,34 +3,33 @@ import { Link, withRouter } from 'react-router-dom'
 import { graphql, compose } from 'react-apollo'
 import gql from 'graphql-tag'
 import ReactPlaceholder from 'react-placeholder';
+import {MainLink, Cloudinary_Code, Cloudinary_Link, Cloudinary_Name, MainApi} from '../Api/';
 import "react-placeholder/lib/reactPlaceholder.css";
-import Topic from './TopicList'
+import Topic from './TopicListx'
 // import  Sidebar from './Sidebar'
 
-class PageLogout extends Component {
-
-
-
+class PageInter extends Component {
 
   render() {
-  const outList = this.props.data.allPosts || [ ]
-  	if (this.props.data.loading) {
+   
+  const inList = this.props.data.allInterests || []
+   if (this.props.data.loading) {
       return ( 
            
-                   <div>
+           <div>
 
                <div className="col-xs-12">
               <div className="main-title">
                 <h4><ReactPlaceholder type='textRow' showLoadingAnimation={true} delay={1000} ready={false} color='#E0E0E0' style={{ width: '100px'}}>
-            <div></div>
-          </ReactPlaceholder>
-          </h4>
+					  <div></div>
+					</ReactPlaceholder>
+					</h4>
               </div>
           </div>
 
-           <div className="col-xs-12">
+      	   <div className="col-xs-12">
 
-                  <div className="post-type-california">
+      	          <div className="post-type-california">
                   <figure className="post-image-draft">
                     <ReactPlaceholder type='rect' showLoadingAnimation={true} delay={1000} ready={false} color='#E0E0E0' style={{ width: '100%', height: '170px', width:'170px'}}>
                         <div>
@@ -42,22 +41,22 @@ class PageLogout extends Component {
                     <div className="post-content">
                          
                            <ReactPlaceholder type='text' ready={false} showLoadingAnimation={true} rows={6} color='#E0E0E0'>
-                <div></div>
-              </ReactPlaceholder>
+							  <div></div>
+							</ReactPlaceholder>
 
 
                     </div>
 
-                  </div>
+      	          </div>
 
 
 
-               </div>
+      	       </div>
 
 
-               <div className="col-xs-12">
+      	       <div className="col-xs-12">
 
-                  <div className="post-type-california">
+      	          <div className="post-type-california">
                   <figure className="post-image-draft">
                     <ReactPlaceholder type='rect' showLoadingAnimation={true} delay={1000} ready={false} color='#E0E0E0' style={{ width: '100%', height: '170px', width:'170px'}}>
                         <div>
@@ -69,26 +68,26 @@ class PageLogout extends Component {
                     <div className="post-content">
                          
                            <ReactPlaceholder type='text' ready={false} showLoadingAnimation={true} rows={6} color='#E0E0E0'>
-                <div></div>
-              </ReactPlaceholder>
+							  <div></div>
+							</ReactPlaceholder>
 
 
                     </div>
 
-                  </div>
+      	          </div>
 
 
-                  
-
-
-
-               </div>
+      	          
 
 
 
-              <div className="col-xs-12">
+      	       </div>
 
-                  <div className="post-type-california">
+
+
+<div className="col-xs-12">
+
+      	          <div className="post-type-california">
                   <figure className="post-image-draft">
                    <ReactPlaceholder type='rect' showLoadingAnimation={true} delay={1000} ready={false} color='#E0E0E0' style={{ width: '100%', height: '170px', width:'170px'}}>
                         <div>
@@ -100,22 +99,88 @@ class PageLogout extends Component {
                     <div className="post-content">
                          
                            <ReactPlaceholder type='text' ready={false} showLoadingAnimation={true} rows={6} color='#E0E0E0'>
-                <div></div>
-              </ReactPlaceholder>
+							  <div></div>
+							</ReactPlaceholder>
 
 
                     </div>
 
-                  </div>
+      	          </div>
 
 
 
-               </div>
-                        
-                 <div className="col-xs-12">
+      	       </div>
+      	                      <div className="col-xs-12">
+              <div className="main-title">
+                <h4><ReactPlaceholder type='textRow' showLoadingAnimation={true} delay={1000} ready={false} color='#E0E0E0' style={{ width: '100px'}}>
+					  <div></div>
+					</ReactPlaceholder>
+					</h4>
+              </div>
+          </div>
 
-                  <div className="post-type-california">
+      	   <div className="col-xs-12">
+
+      	          <div className="post-type-california">
+                 <figure className="post-image-draft">
+                     <ReactPlaceholder type='rect' showLoadingAnimation={true} delay={1000} ready={false} color='#E0E0E0' style={{ width: '100%', height: '170px', width:'170px'}}>
+                        <div>
+
+                        </div>
+                    </ReactPlaceholder>
+                   </figure>
+
+                    <div className="post-content">
+                         
+                           <ReactPlaceholder type='text' ready={false} showLoadingAnimation={true} rows={6} color='#E0E0E0'>
+							  <div></div>
+							</ReactPlaceholder>
+
+
+                    </div>
+
+      	          </div>
+
+
+
+      	       </div>
+
+
+      	       <div className="col-xs-12">
+
+      	          <div className="post-type-california">
                   <figure className="post-image-draft">
+                      <ReactPlaceholder type='rect' showLoadingAnimation={true} delay={1000} ready={false} color='#E0E0E0' style={{ width: '100%', height: '170px', width:'170px'}}>
+                        <div>
+
+                        </div>
+                    </ReactPlaceholder>
+                   </figure>
+
+                    <div className="post-content">
+                         
+                           <ReactPlaceholder type='text' ready={false} showLoadingAnimation={true} rows={6} color='#E0E0E0'>
+							  <div></div>
+							</ReactPlaceholder>
+
+
+                    </div>
+
+      	          </div>
+
+
+      	          
+
+
+
+      	       </div>
+
+
+
+               <div className="col-xs-12">
+
+      	          <div className="post-type-california">
+                 <figure className="post-image-draft">
                     <ReactPlaceholder type='rect' showLoadingAnimation={true} delay={1000} ready={false} color='#E0E0E0' style={{ width: '100%', height: '170px', width:'170px'}}>
                         <div>
 
@@ -126,108 +191,39 @@ class PageLogout extends Component {
                     <div className="post-content">
                          
                            <ReactPlaceholder type='text' ready={false} showLoadingAnimation={true} rows={6} color='#E0E0E0'>
-                <div></div>
-              </ReactPlaceholder>
+							  <div></div>
+							</ReactPlaceholder>
 
 
                     </div>
 
-                  </div>
-
-
-                  
+      	          </div>
 
 
 
-               </div>
-
-                <div className="col-xs-12">
-
-                  <div className="post-type-california">
-                  <figure className="post-image-draft">
-                    <ReactPlaceholder type='rect' showLoadingAnimation={true} delay={1000} ready={false} color='#E0E0E0' style={{ width: '100%', height: '170px', width:'170px'}}>
-                        <div>
-
-                        </div>
-                    </ReactPlaceholder>
-                   </figure>
-
-                    <div className="post-content">
-                         
-                           <ReactPlaceholder type='text' ready={false} showLoadingAnimation={true} rows={6} color='#E0E0E0'>
-                <div></div>
-              </ReactPlaceholder>
-
-
-                    </div>
-
-                  </div>
-
-
-                  
+      	       </div>
 
 
 
-               </div>
+      	       </div>
 
-                <div className="col-xs-12">
-
-                  <div className="post-type-california">
-                  <figure className="post-image-draft">
-                    <ReactPlaceholder type='rect' showLoadingAnimation={true} delay={1000} ready={false} color='#E0E0E0' style={{ width: '100%', height: '170px', width:'170px'}}>
-                        <div>
-
-                        </div>
-                    </ReactPlaceholder>
-                   </figure>
-
-                    <div className="post-content">
-                         
-                           <ReactPlaceholder type='text' ready={false} showLoadingAnimation={true} rows={6} color='#E0E0E0'>
-                <div></div>
-              </ReactPlaceholder>
-
-
-                    </div>
-
-                  </div>
-
-
-                  
-
-
-
-               </div>     
-
-
-
-
-
-               </div>
 
       	    )
     }
    
+  	
    
     return (
-
-  
       
-	     <div>
 	     
-          <div className="col-xs-12">
-              <div className="main-title">
-                <h4><strong>Latest</strong> Storie</h4>
-              </div>
-          </div>
-
+         
            <div className="col-xs-12">
 
              
-             {this.props.data.allPosts.map((post) => (
+             {inList.map((inter) => (
             <Topic
-              key={post.id}
-              post={post}
+               key={inter.id}
+              inter={inter}
               refresh={() => this.props.data.refetch()}
             />
           ))}
@@ -235,7 +231,7 @@ class PageLogout extends Component {
 
            </div>
 
-	      </div>
+	    
 
 
     )
@@ -243,21 +239,40 @@ class PageLogout extends Component {
 }
 
 
+const Uid = window.localStorage.getItem('uid');
 
 
-const QueryLog = gql`query allPosts {
- allPosts(orderBy: createdAt_DESC,filter:{
+const Queryx = gql`query allPostsx($id: ID!) {
+
+ allInterests(filter:{
+    user:{
+      id: $id
+    }
+  }, orderBy:updatedAt_DESC){
+    id
+    topics(orderBy: updatedAt_DESC,
+      filter:{  
+        posts_some:{
+          id_starts_with:"c"
+        }
+      }
+      
+    ){
+      name
+      slug
+      id
+      posts(orderBy: createdAt_DESC,filter:{
     isPublished:true
-  }, first:20) {
+      }, last:5){
         id
         title
         slug
         headline
-        createdAt
         imageId
         imageUrl
         reading
-        type{
+        createdAt
+         type{
           name
         }
         publishing{
@@ -265,22 +280,26 @@ const QueryLog = gql`query allPosts {
           slug
         }
         user{
+          id
+          avatar
           username
           facebookUserId
-          avatar
           member{
             firstName
             lastName
           }
         }
-           
-     }
+      }
+    }
+  }
+
 }`
 
 
 
-
-const ListPageWithData = graphql(QueryLog)(PageLogout)
+const ListPageWithData = graphql(Queryx, {
+  options: { variables: { id: Uid } }
+})(PageInter)
 
 export default ListPageWithData
 

@@ -442,7 +442,7 @@ renderComment(){
                           <p className="author-info">{this.state.bio}. <br /><span  style={{color:'#baba',fontSize:'11px' }}>{createDT} - {this.state.reading} min read</span></p>
                         </div>
                         
-                       <div className="col-md-6"><span className="pull-right" style={{color:'#666',fontSize:'12px',padding:'10px 0 0 0'}}> {this.renderUpdated()}</span></div>
+                       <div className="col-md-6"><span className="pull-right" style={{color:'#666',fontSize:'12px',padding:'10px 0 0 0'}}> <Share /></span></div>
                     </div>
 
                         <Image cloudName={Cloudinary_Name} publicId={this.state.imageId}  crop="scale"  alt={this.state.title}/>

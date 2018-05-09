@@ -14,7 +14,11 @@ class Publication extends Component {
 
 renderList(){
 
-  if(this.props.data.allPublishings == ''){
+  const pubList = this.props.data.allPublishings ||  [ ]
+   
+
+
+  if(this.props.data.allPublishings  == null){
 
    
     return(
@@ -22,7 +26,7 @@ renderList(){
          <div>
          <p>No Publications Yet !!!</p>
          <br />
-           <Link to="/new-publication"  style={{margin:'5px 0px', fontSize:'14px', border:'1px solid #333', padding:'10px', textDecoration:'none'}} alt="Add new storie"><i className="far fa-edit" style={{fontSize:'16px'}}></i>&nbsp;&nbsp; New Publications</Link>
+           <a href="/new-publication"  style={{margin:'5px 0px', fontSize:'14px', border:'1px solid #333', padding:'10px', textDecoration:'none'}} alt="Add new storie"><i className="far fa-edit" style={{fontSize:'16px'}}></i>&nbsp;&nbsp; New Publications</a>
          </div>
 
       )
@@ -33,7 +37,7 @@ renderList(){
 
           
           <div>
-               {this.props.data.allPublishings.map((post) => (
+               {pubList.map((post) => (
                     <Dlist
                       key={post.id}
                       post={post}
@@ -54,7 +58,7 @@ renderList(){
 
   render() {
 
-    if(localStorage.getItem('nordic') == null ){
+    if(localStorage.getItem('nordic') == null && localStorage.getItem('uid') == null ){
 
 
     return(
@@ -74,10 +78,10 @@ renderList(){
           <div className="main">
             <div className="row inner" style={{paddingTop:'100px'}}>
 
-            <div className="col-md-2"></div>
+            <div className="col-md-3"></div>
               
 
-            <div className="col-md-10">
+            <div className="col-md-9">
                 <div className="main-title">
                   <h4><strong>My Publications</strong> </h4>
 
@@ -116,7 +120,7 @@ renderList(){
             <div className="col-md-9">
                 <div className="main-title">
                   <h4><strong>My Publications</strong></h4>
-                   <div className="pull-right" style={{marginTop:'40px', textTransform:'capitalize', fontSize:'13px'}}> <Link to="/new-publication"  style={{margin:'5px 0px', fontSize:'14px',padding:'10px', textDecoration:'none'}} alt="Add new publications"><i className="far fa-edit" style={{fontSize:'16px'}}></i>&nbsp;&nbsp; New Publications</Link></div>
+                   <div className="pull-right" style={{marginTop:'40px', textTransform:'capitalize', fontSize:'13px'}}> <a href="/new-publication"  style={{margin:'5px 0px', fontSize:'14px',padding:'10px', textDecoration:'none'}} alt="Add new publications"><i className="far fa-edit" style={{fontSize:'16px'}}></i>&nbsp;&nbsp; New Publications</a></div>
                 </div>
 
                 <div className="row">
@@ -169,6 +173,9 @@ const QueryPublic = gql`query allPublicDraft($id: ID!) {
         writters{
           id
           username
+        }
+        user{
+          id
         }  
            
      }

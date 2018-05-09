@@ -3,233 +3,171 @@ import { Link, withRouter } from 'react-router-dom'
 import { graphql, compose } from 'react-apollo'
 import gql from 'graphql-tag'
 import ReactPlaceholder from 'react-placeholder';
+import {MainLink, Cloudinary_Code, Cloudinary_Link, Cloudinary_Name, MainApi} from '../Api/';
 import "react-placeholder/lib/reactPlaceholder.css";
-import Topic from './TopicListx'
-// import  Sidebar from './Sidebar'
+import PageTopic from './PageTopic'
+import PageInter from './PageInter'
 
 class PageLogin extends Component {
+
+constructor(props) {
+    super(props)
+    this.state = { 
+
+    isInterested:'',
+    loading: true
+    }
+
+}
+
+ componentDidMount() {
+    var that = this;
+    that.getData();
+
+  }
+
+
+ ////////////////////get data
+
+  getData(){
+     var that = this;
+     that.setState({
+          loading: true
+      });
+     var fetch = require('graphql-fetch')(MainApi)
+
+          var query = `
+            query Draftzzz($id: ID!) {
+              User(id: $id){
+              id
+              isInterested
+                  interest{
+                  id
+                  name
+                  topics{
+                    id
+                    name
+                  }
+                }
+              }
+            }
+          `
+          var queryVars = {
+            id: localStorage.getItem('uid')
+          }
+          var opts = {
+            // custom fetch options
+          }
+
+
+          fetch(query, queryVars, opts).then(function (results) {
+
+            //console.log(results)
+            if (results.errors) {
+             // console.log('cccc')
+              //...
+             // window.location= "/";
+            }
+            //var BlogCategory = results.data.BlogCategory
+
+
+           if ( results.data.User == null){
+
+                return
+
+           }else{
+
+            
+          
+              that.setState({
+              data: results.data.User,
+              id:results.data.User.id,
+              isInterested:results.data.User.isInterested,
+              topics:results.data.User.interest.topics,
+
+              loading:false
+             });
+             
+
+
+           }
+
+           
+            
+
+              // that.onRead();
+           
+          })
+ 
+
+  }
+
+
+
+  renderMain(){
+   
+ 
+
+   if(this.state.isInterested == false ){
+
+
+       return(
+
+          <PageTopic />
+
+       )
+
+
+
+   }
+   if(this.state.topics == '' ){
+
+
+       return(
+
+          <PageTopic />
+
+       )
+
+
+
+   }
+
+   else{
+
+
+     return(
+
+        <PageInter />
+
+     )
+
+   }
+
+
+  }
 
 
 
 
   render() {
    
-  const inList = this.props.data.allInterests || []
-   if (this.props.data.loading) {
-      return ( 
-           
-           <div>
+if (this.state.loading) {
+      return (<div></div>) 
 
-               <div className="col-xs-12">
-              <div className="main-title">
-                <h4><ReactPlaceholder type='textRow' showLoadingAnimation={true} delay={1000} ready={false} color='#E0E0E0' style={{ width: '100px'}}>
-					  <div></div>
-					</ReactPlaceholder>
-					</h4>
-              </div>
-          </div>
 
-      	   <div className="col-xs-12">
-
-      	          <div className="post-type-california">
-                  <figure className="post-image-draft">
-                    <ReactPlaceholder type='rect' showLoadingAnimation={true} delay={1000} ready={false} color='#E0E0E0' style={{ width: '100%', height: '170px', width:'170px'}}>
-                        <div>
-
-                        </div>
-                    </ReactPlaceholder>
-                   </figure>
-
-                    <div className="post-content">
-                         
-                           <ReactPlaceholder type='text' ready={false} showLoadingAnimation={true} rows={6} color='#E0E0E0'>
-							  <div></div>
-							</ReactPlaceholder>
-
-
-                    </div>
-
-      	          </div>
-
-
-
-      	       </div>
-
-
-      	       <div className="col-xs-12">
-
-      	          <div className="post-type-california">
-                  <figure className="post-image-draft">
-                    <ReactPlaceholder type='rect' showLoadingAnimation={true} delay={1000} ready={false} color='#E0E0E0' style={{ width: '100%', height: '170px', width:'170px'}}>
-                        <div>
-
-                        </div>
-                    </ReactPlaceholder>
-                   </figure>
-
-                    <div className="post-content">
-                         
-                           <ReactPlaceholder type='text' ready={false} showLoadingAnimation={true} rows={6} color='#E0E0E0'>
-							  <div></div>
-							</ReactPlaceholder>
-
-
-                    </div>
-
-      	          </div>
-
-
-      	          
-
-
-
-      	       </div>
-
-
-
-<div className="col-xs-12">
-
-      	          <div className="post-type-california">
-                  <figure className="post-image-draft">
-                   <ReactPlaceholder type='rect' showLoadingAnimation={true} delay={1000} ready={false} color='#E0E0E0' style={{ width: '100%', height: '170px', width:'170px'}}>
-                        <div>
-
-                        </div>
-                    </ReactPlaceholder>
-                   </figure>
-
-                    <div className="post-content">
-                         
-                           <ReactPlaceholder type='text' ready={false} showLoadingAnimation={true} rows={6} color='#E0E0E0'>
-							  <div></div>
-							</ReactPlaceholder>
-
-
-                    </div>
-
-      	          </div>
-
-
-
-      	       </div>
-      	                      <div className="col-xs-12">
-              <div className="main-title">
-                <h4><ReactPlaceholder type='textRow' showLoadingAnimation={true} delay={1000} ready={false} color='#E0E0E0' style={{ width: '100px'}}>
-					  <div></div>
-					</ReactPlaceholder>
-					</h4>
-              </div>
-          </div>
-
-      	   <div className="col-xs-12">
-
-      	          <div className="post-type-california">
-                 <figure className="post-image-draft">
-                     <ReactPlaceholder type='rect' showLoadingAnimation={true} delay={1000} ready={false} color='#E0E0E0' style={{ width: '100%', height: '170px', width:'170px'}}>
-                        <div>
-
-                        </div>
-                    </ReactPlaceholder>
-                   </figure>
-
-                    <div className="post-content">
-                         
-                           <ReactPlaceholder type='text' ready={false} showLoadingAnimation={true} rows={6} color='#E0E0E0'>
-							  <div></div>
-							</ReactPlaceholder>
-
-
-                    </div>
-
-      	          </div>
-
-
-
-      	       </div>
-
-
-      	       <div className="col-xs-12">
-
-      	          <div className="post-type-california">
-                  <figure className="post-image-draft">
-                      <ReactPlaceholder type='rect' showLoadingAnimation={true} delay={1000} ready={false} color='#E0E0E0' style={{ width: '100%', height: '170px', width:'170px'}}>
-                        <div>
-
-                        </div>
-                    </ReactPlaceholder>
-                   </figure>
-
-                    <div className="post-content">
-                         
-                           <ReactPlaceholder type='text' ready={false} showLoadingAnimation={true} rows={6} color='#E0E0E0'>
-							  <div></div>
-							</ReactPlaceholder>
-
-
-                    </div>
-
-      	          </div>
-
-
-      	          
-
-
-
-      	       </div>
-
-
-
-               <div className="col-xs-12">
-
-      	          <div className="post-type-california">
-                 <figure className="post-image-draft">
-                    <ReactPlaceholder type='rect' showLoadingAnimation={true} delay={1000} ready={false} color='#E0E0E0' style={{ width: '100%', height: '170px', width:'170px'}}>
-                        <div>
-
-                        </div>
-                    </ReactPlaceholder>
-                   </figure>
-
-                    <div className="post-content">
-                         
-                           <ReactPlaceholder type='text' ready={false} showLoadingAnimation={true} rows={6} color='#E0E0E0'>
-							  <div></div>
-							</ReactPlaceholder>
-
-
-                    </div>
-
-      	          </div>
-
-
-
-      	       </div>
-
-
-
-      	       </div>
-
-
-      	    )
-    }
-   
-  	
+      }
+          
+  
    
     return (
       
 	     
          
-           <div className="col-xs-12">
+           <div>
 
-             
-             {inList.map((inter) => (
-            <Topic
-               key={inter.id}
-              inter={inter}
-              refresh={() => this.props.data.refetch()}
-            />
-          ))}
-
+             {this.renderMain()}
+          
 
            </div>
 
@@ -241,67 +179,8 @@ class PageLogin extends Component {
 }
 
 
-const Uid = window.localStorage.getItem('uid');
-
-
-const Queryx = gql`query allPostsx($id: ID!) {
-
- allInterests(filter:{
-    user:{
-      id: $id
-    }
-  }, orderBy:updatedAt_DESC){
-    id
-    topics(orderBy: updatedAt_DESC,
-      filter:{  
-        posts_some:{
-          id_starts_with:"c"
-        }
-      }
-      
-    ){
-      name
-      slug
-      id
-      posts(orderBy: createdAt_DESC,filter:{
-    isPublished:true
-      }, last:5){
-        id
-        title
-        slug
-        headline
-        imageId
-        imageUrl
-        reading
-        createdAt
-         type{
-          name
-        }
-        publishing{
-          name
-          slug
-        }
-        user{
-          id
-          avatar
-          username
-          facebookUserId
-          member{
-            firstName
-            lastName
-          }
-        }
-      }
-    }
-  }
-
-}`
 
 
 
-const ListPageWithData = graphql(Queryx, {
-  options: { variables: { id: Uid } }
-})(PageLogin)
-
-export default ListPageWithData
+export default PageLogin
 

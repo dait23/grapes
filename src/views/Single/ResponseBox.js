@@ -8,7 +8,7 @@ import ReactPlaceholder from 'react-placeholder';
 import "react-placeholder/lib/reactPlaceholder.css";
 
 
-
+const Uid = window.localStorage.getItem('uid');
 
 class ResponseBox extends Component {
 
@@ -22,7 +22,6 @@ static propTypes = {
  constructor(props) {
     super(props)
     this.state = { 
-
     text:''
     }
 
@@ -31,7 +30,12 @@ static propTypes = {
 }
 
 renderThumb(){
-  //console.log(this.props.id)
+  if (this.props.data.loading) {
+      return ( <div></div>)
+
+    }
+    
+
      
 
     if(this.props.data.User.avatar == '' ){
@@ -200,7 +204,7 @@ handlePost = async () => {
 }
 
 
-const Uid = window.localStorage.getItem('uid');
+
 
 const CREATE_SAVE_COMMENT = gql`
   mutation CreateCommentMutation (

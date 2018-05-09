@@ -8,23 +8,16 @@ import  Sidebar from './Sidebar/'
 
 import PageLogin from './PageLogin'
 import PageLogout from './PageLogout'
-import PageTopic from './PageTopic'
+
 
 class MainContent extends Component {
-
-constructor(props) {
-    super(props)
-    this.state = { 
-    isInterested:''
-    }
-
-}
-
 
 
 renderIn(){
 
-	if(localStorage.getItem('nordic') === null ){
+   
+
+	if(localStorage.getItem('nordic') == null && localStorage.getItem('uid') == null ){
 
 
 		return(
@@ -36,13 +29,6 @@ renderIn(){
 
 	}
 
-	if(this.props.data.User.isInterested == false){
-
-     return(
-
-            <PageTopic />
-     	)
-	}
 	else{
 
 
@@ -64,13 +50,7 @@ renderIn(){
   render() {
    
 
-   	if (this.props.data.loading) {
 
-            return(
-                 <div></div>
-            	)
-
-		 }
    
     return (
       
@@ -95,19 +75,4 @@ renderIn(){
 
 
 
-
-const Uid = window.localStorage.getItem('uid');
-const QueryUserx = gql`query Userx($id: ID!) {
-
-   User(id: $id){
-    id
-    isInterested
-  }
-
-}`
-
-const ListPageWithData = graphql(QueryUserx, {
-  options: { variables: { id: Uid } }
-})(MainContent)
-
-export default ListPageWithData
+export default MainContent

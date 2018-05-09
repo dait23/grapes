@@ -78,34 +78,43 @@ class Header extends React.Component {
 
   _isLoggedIn = () => {
 
+
+
     return this.props.data.loggedInUser && 
       this.props.data.loggedInUser.id && 
-      this.props.data.loggedInUser.id !== ''
+      localStorage.setItem('uid', this.props.data.loggedInUser.id);
+     
+
 
      
   }
 
   _logout = () => {
 
-     window.localStorage.clear();
-     //localStorage.removeItem('nordic') && localStorage.removeItem('uid');
+     window.localStorage.clear()
+     // window.localStorage.removeItem('nordic');
      //localStorage.removeItem('uid');
     // localStorage.removeItem('uid')
     //localStorage.removeItem('nordic')
     // localStorage.removeItem('nordic');
      window.location.reload()
+     
   }
 
 
   render () {
-    if (this._isLoggedIn()) {
+     if (this.props.data.loading) {
+      return ( <div></div>)
+           }
+   if (this._isLoggedIn() ) {
 
-       localStorage.setItem('uid', this.props.data.loggedInUser.id);
+       
 
       return this.renderLoggedIn()
     } else {
-      //localStorage.removeItem('uid')
+      
       return this.renderLoggedOut()
+
     }
 
 
@@ -115,6 +124,68 @@ class Header extends React.Component {
 
 
   }
+
+
+renderButton(){
+ 
+ if (window.localStorage.getItem('uid') !== null && window.localStorage.getItem('nordic') !== null ) {
+
+     return(
+        
+        <ul className="nav navbar-nav navbar-right">
+
+              <li>
+              
+              <a href="/new-story"  style={{margin:'5px 0px', fontSize:'14px'}} alt="Add new storie"><i className="far fa-edit" style={{fontSize:'20px'}}></i>&nbsp;&nbsp; New Storie</a>
+
+            </li>
+           
+            <li>
+
+            <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+              <DropdownToggle>
+               {this.renderThumb()} &nbsp;&nbsp;
+
+                <span className="d-md-down-none"></span>
+              </DropdownToggle>
+              <DropdownMenu right>
+                <DropdownItem divider/>
+                <DropdownItem style={{margin:'5px 0'}}><a href="/me/stories/drafts">Drafts</a> </DropdownItem>
+                <DropdownItem style={{margin:'5px 0'}}><a href="/me/stories/publish">Publish</a> </DropdownItem>
+                <DropdownItem style={{margin:'5px 0'}}><a href="/me/publications">Publications</a></DropdownItem>
+                <DropdownItem style={{margin:'5px 0'}}><a href="/me/topics/interest">Interests</a></DropdownItem>
+                <DropdownItem style={{margin:'5px 0'}}><a href="/me/settings">Settings</a></DropdownItem>
+                <DropdownItem  onClick={this._logout} style={{margin:'5px 0'}}> Logout</DropdownItem>
+                <DropdownItem divider/>
+              </DropdownMenu>
+            </Dropdown>
+
+
+            </li>
+
+
+        </ul>
+
+      )
+
+  }else{
+    localStorage.removeItem('uid');
+  return(
+        
+        <div>
+
+           <Button color="primary" onClick={this._handleFBLogin} style={{marginTop:'8px', fontSize:'12px', fontWeight:'600'}}><i className="fab fa-facebook-square" style={{ fontSize:'15px', }}></i> &nbsp; Login Facebook</Button>
+
+
+        </div>
+
+      )
+
+  }
+
+}
+
+
 
   renderThumb(){
      const pic = "https://res.cloudinary.com/nomadic-id/image/facebook/c_scale,r_50,w_50/" + this.props.data.loggedInUser.facebookUserId + ".jpg"
@@ -144,7 +215,9 @@ class Header extends React.Component {
      //     const Uid = localStorage.getItem('uid');
     //console.log(this.props.data.loggedInUser.isInterested);
 
-    
+     if (this.props.data.loading) {
+      return ( <div></div>)
+           }
 
    
     return (
@@ -166,39 +239,12 @@ class Header extends React.Component {
         </div>
      
      <div id="navbar" className="navbar-collapse collapse">
-      <ul className="nav navbar-nav navbar-right">
+      
             
+          {this.renderButton()}   
               
-            <li>
-              
-              <a href="/new-story"  style={{margin:'5px 0px', fontSize:'14px'}} alt="Add new storie"><i className="far fa-edit" style={{fontSize:'20px'}}></i>&nbsp;&nbsp; New Storie</a>
-
-            </li>
-           
-            <li>
-
-            <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-              <DropdownToggle>
-               {this.renderThumb()} &nbsp;&nbsp;
-
-                <span className="d-md-down-none"></span>
-              </DropdownToggle>
-              <DropdownMenu right>
-                <DropdownItem divider/>
-                <DropdownItem style={{margin:'5px 0'}}><a href="/me/stories/drafts">Drafts</a> </DropdownItem>
-                <DropdownItem style={{margin:'5px 0'}}><a href="/me/stories/publish">Publish</a> </DropdownItem>
-                <DropdownItem style={{margin:'5px 0'}}><a href="/me/publications">Publications</a></DropdownItem>
-                <DropdownItem style={{margin:'5px 0'}}><a href="/me/topics/interest">Interests</a></DropdownItem>
-                <DropdownItem style={{margin:'5px 0'}}><a href="/me/settings">Settings</a></DropdownItem>
-                <DropdownItem  onClick={this._logout} style={{margin:'5px 0'}}> Logout</DropdownItem>
-                <DropdownItem divider/>
-              </DropdownMenu>
-            </Dropdown>
-
-
-            </li>
                
-        </ul>
+        
      </div> 
     </div>
         
@@ -210,6 +256,7 @@ class Header extends React.Component {
   }
 
   renderLoggedOut() {
+
     return (
       <div>
        
@@ -235,10 +282,9 @@ class Header extends React.Component {
             <li>
              
              
-
+           {this.renderButton()}
           
-             <Button color="primary" onClick={this._handleFBLogin} style={{marginTop:'8px', fontSize:'12px', fontWeight:'600'}}><i className="fab fa-facebook-square" style={{ fontSize:'15px', }}></i> &nbsp; Login Facebook</Button>
-
+          
             </li>
            
                

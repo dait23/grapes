@@ -83,7 +83,7 @@ renderThumb(){
                            <div className="post-content-page">
                           <a href={`/@${this.props.post.user.username}/${this.props.post.slug}`}>  <h4 className="post-title">{this.props.post.title}</h4></a>
                            <p>{this.props.post.headline}</p>
-                           <span className="post-author">{this.renderThumb()}<a href={`/@${this.props.post.user.username}`}>{this.props.post.user.member.firstName} {this.props.post.user.member.lastName}</a> </span><span className="post-date">{this.renderPublish()} - {createDT},  {this.props.post.reading} min read</span> 
+                           <span className="post-author">{this.renderThumb()}<a href={`/@${this.props.post.user.username}`} style={{marginLeft:'5px'}}>{this.props.post.user.member.firstName} {this.props.post.user.member.lastName}</a> </span><span className="post-date">{this.renderPublish()} - {createDT},  {this.props.post.reading} min read</span> 
                           <span className="pull-right"  style={{fontSize:'18px'}} ><i className="far fa-bookmark"></i></span>
                          </div>
 

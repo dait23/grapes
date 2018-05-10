@@ -96,6 +96,7 @@ onRead() {
               Post(slug: $slug){
               id
               title
+              slug
               headline
               body
               reading
@@ -426,6 +427,7 @@ renderComment(){
                 <meta property="og:description" content={this.state.headline} />
                 <meta property="og:image" content={this.state.imageUrl} />
                 <meta property="og:type" content="article" />
+                <meta property="og:site_name" content="nomadic" />
                 <meta property="og:url" content={`https://nomadic.co.id/@${this.state.username}/${this.state.slug}`} />
 
                 <meta name="twitter:card" value={this.state.headline} />

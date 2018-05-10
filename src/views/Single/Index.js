@@ -169,7 +169,7 @@ onRead() {
 
            if ( results.data.Post == null){
 
-               //window.location= "/";
+               window.location= "/";
 
            }else{
 

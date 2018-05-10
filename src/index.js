@@ -111,6 +111,13 @@ const Publishing= Loadable({
 
 });
 
+const NotFound= Loadable({
+ loader: () => fakeDelay(500).then(() => import('./views/404/')),
+  loading: Loading,
+  timeout: 10000, // 10 seconds
+
+});
+
 const Interest= Loadable({
  loader: () => fakeDelay(500).then(() => import('./views/Interest/')),
   loading: Loading,
@@ -256,6 +263,7 @@ render(
              <Route path="/me/publication/draft-story/edit/:id" component={StoryDraft} />
              <Route path="/me/list/bookmarks" component={Login} />
              <Route path="/me/settings" component={Setting} />
+             <Route path="/404" component={NotFound} />
              <Route path='/new-story' component={NewStory} />
              <Route path='/new-publication' component={NewPublish} />
             <Route path="*" component={NotFound} />        

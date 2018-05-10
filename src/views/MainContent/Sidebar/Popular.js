@@ -32,7 +32,7 @@ const Story = inject('popularStore')(
         
     <div>
      
-           <div className="header-block"><h3 className="title">Popular Stories</h3></div>
+           <div className="header-block-read"><h3 className="title">Popular Stories</h3></div>
 
            <div className="trend-postsx">
 

@@ -18,7 +18,7 @@ renderList(){
    
 
 
-  if(this.props.data.allPublishings  == null){
+  if(this.props.data.allPublishings  == ''){
 
    
     return(

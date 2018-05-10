@@ -64,7 +64,7 @@ class Sidebar extends Component {
            {this.renderIn()}
 
             <div style={{width:'100%', float:'left', fontSize:'12px', marginTop:'0px'}} >
-           <a href="https://about.nomadic.co.id/help">Help</a>&nbsp; &nbsp;<a href="#">About</a>&nbsp; &nbsp;<a href="#">Status</a>&nbsp; &nbsp;<a href="#">Blog</a> &nbsp; &nbsp;<a href="#">Terms</a>&nbsp; &nbsp;<a href="#">Privacy</a>&nbsp; &nbsp;<a href="#">Press</a>
+           <a href="https://about.nomadic.co.id/help" target="_blank" rel="noopener noreferrer">Help</a>&nbsp; &nbsp;<a href="https://about.nomadic.co.id/" target="_blank" rel="noopener noreferrer">About</a>&nbsp; &nbsp;<a href="https://status.nomadic.co.id/" target="_blank" rel="noopener noreferrer">Status</a>&nbsp; &nbsp;<a href="https://nomadic.co.id/publishing/nomadic" target="_blank" rel="noopener noreferrer">>Blog</a> &nbsp; &nbsp;<a href="https://about.nomadic.co.id/terms" target="_blank" rel="noopener noreferrer">Terms</a>&nbsp; &nbsp;<a href="https://about.nomadic.co.id/privacy" target="_blank" rel="noopener noreferrer">Privacy</a>
             </div>
            </aside>
     )

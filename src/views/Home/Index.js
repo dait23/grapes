@@ -25,7 +25,8 @@ class Home extends Component {
                   <h1 style={{fontFamily:'Poppins, sans-serif',  fontSize:'33px', fontWeight:'600'}}>Welcome to Nomadic</h1>
                     <p className="lead" style={{fontSize:'22px', fontWeight:'500',  fontFamily:'-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif'}}>Publishing Place for Everyone</p>
                     <hr className="my-2" />
-                    <p style={{fontSize:'16px'}}>We’ll deliver the best stories and ideas <br/> on the topics you care about most straight to your homepage, app, or inbox.</p>
+                    <p style={{fontSize:'16px'}}>a free place to create, read storie or publishing ideas
+ <br/> follow your interest topic, publisher , or another nomadic member straight on your homepage.</p>
                     <p className="lead">
                       <Button color="success" style={{borderRadius:'0px', padding:'10px 30px', margin:'20px 0px 0'}}> <a href="https://about.nomadic.co.id" style={{color:'#fff'}}>Learn More</a></Button>
                     </p>

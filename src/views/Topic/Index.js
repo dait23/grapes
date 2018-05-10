@@ -298,6 +298,25 @@ class Topic extends Component {
     return (
       
      <div>
+          <MetaTags>
+                <title>{this.state.name}</title>
+                <meta name="description" content={this.state.name} />
+                <meta property="og:title" content={this.state.name} />
+                <meta property="og:description" content={this.state.name} />
+                <meta property="og:image" content="https://res.cloudinary.com/spazeeid/image/upload/v1521322663/cover_jjet5b.jpg" />
+                <meta property="og:type" content="article" />
+                <meta property="og:url" content={`https://nomadic.co.id/topic/${this.state.slug}`} />
+
+                <meta name="twitter:card" value={this.state.name} />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:site" content="@NomadicId" />
+                <meta name="twitter:title" content={this.state.name} />
+                <meta name="twitter:description" content={this.state.name} />
+                <meta name="twitter:creator" content="@NomadicId" />
+                <meta name="twitter:image:src" content="https://res.cloudinary.com/spazeeid/image/upload/v1521322663/cover_jjet5b.jpg" />
+
+
+            </MetaTags>
       <section className="article-detail-newyork">
          <figure className="big-post-imagex">
            <div className="over-content">

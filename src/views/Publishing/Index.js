@@ -327,6 +327,25 @@ class Publishing extends Component {
       
   
       <section className="article-detail-newyork">
+       <MetaTags>
+                <title>{this.state.name}</title>
+                <meta name="description" content={this.state.description} />
+                <meta property="og:title" content={this.state.name} />
+                <meta property="og:description" content={this.state.description} />
+                <meta property="og:image" content={this.state.avatarUrl} />
+                <meta property="og:type" content="article" />
+                <meta property="og:url" content={`https://nomadic.co.id/publishing/${this.state.slug}`} />
+
+                <meta name="twitter:card" value={this.state.name} />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:site" content="@NomadicId" />
+                <meta name="twitter:title" content={this.state.name} />
+                <meta name="twitter:description" content={this.state.description} />
+                <meta name="twitter:creator" content="@NomadicId" />
+                <meta name="twitter:image:src" content={this.state.avatarUrl} />
+
+
+            </MetaTags>
          <figure className="big-post-image" style={{backgroundImage: `url(${xxx})`, backgroundSize:'cover', backgroundPosition:'center center'}}>
 
            <div className="over-content">

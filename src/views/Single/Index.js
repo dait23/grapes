@@ -176,6 +176,7 @@ onRead() {
               data: results.data.Post,
               id:results.data.Post.id,
               title:results.data.Post.title,
+              slug:results.data.Post.slug,
               headline:results.data.Post.headline,
               body:results.data.Post.body,
               read:results.data.Post.read,
@@ -424,6 +425,18 @@ renderComment(){
                 <meta property="og:title" content={this.state.title} />
                 <meta property="og:description" content={this.state.headline} />
                 <meta property="og:image" content={this.state.imageUrl} />
+                <meta property="og:type" content="article" />
+                <meta property="og:url" content={`https://nomadic.co.id/@${this.state.username}/${this.state.slug}`} />
+
+                <meta name="twitter:card" value={this.state.headline} />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:site" content="@NomadicId" />
+                <meta name="twitter:title" content={this.state.title} />
+                <meta name="twitter:description" content={this.state.headline} />
+                <meta name="twitter:creator" content="@NomadicId" />
+                <meta name="twitter:image:src" content={this.state.imageUrl} />
+
+
             </MetaTags>
             <section className="article-detail-newyork">
 

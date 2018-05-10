@@ -111,12 +111,7 @@ const Publishing= Loadable({
 
 });
 
-const NotFound= Loadable({
- loader: () => fakeDelay(500).then(() => import('./views/404/')),
-  loading: Loading,
-  timeout: 10000, // 10 seconds
 
-});
 
 const Interest= Loadable({
  loader: () => fakeDelay(500).then(() => import('./views/Interest/')),

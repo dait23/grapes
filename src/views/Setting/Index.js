@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
-import { Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Col, Button, Form, FormGroup, Label, Input, FormText, FormFeedback } from 'reactstrap';
 import Dropzone from 'react-dropzone'
 import request from 'superagent';
 import slugify from 'slugify';
 import {Image} from 'cloudinary-react';
 import {withRouter } from 'react-router-dom'
 import { toast, ToastContainer } from 'react-toastify';
-
+import MetaTags from 'react-meta-tags';
 import { graphql, compose } from 'react-apollo'
 import gql from 'graphql-tag'
 import { Multiselect } from 'react-widgets'
@@ -33,17 +33,93 @@ class Setting extends Component {
      username:'',
      bio:'',
      email:'',
+    facebook:'',
+    instagram:'',
+    twitter:'',
      firstName:'',
+     isUser: true,
+     isUsername: true,
      lastName:'',
      loading:true,
      userId: localStorage.getItem('uid'),
      uploadedFile: null,
       placeholder: 'Write here...',
     }
+     this.handleChange= this.handleChange.bind(this)
    
 
   
   }
+
+
+  handleChange () {
+
+        // const map1 = value.map(x => x.id);
+        // this.setState({ topicsIds: map1 });
+
+         var that = this;
+
+         that.setState({
+          isUser:false,
+          isUsername: false
+      });
+    
+         var fetch = require('graphql-fetch')(MainApi)
+
+          var query = `
+            query User($slug: String!) {
+              User(username: $slug){
+              id
+             
+              }
+            }
+          `
+          var queryVars = {
+            slug: this.state.slug
+          }
+          var opts = {
+            // custom fetch options
+          }
+
+
+          fetch(query, queryVars, opts).then(function (results) {
+
+            //console.log(results)
+            if (results.errors) {
+             // console.log('cccc')
+              //...
+             return
+            }
+            //var BlogCategory = results.data.BlogCategory
+
+
+           if ( results.data.User !== null){
+
+               that.setState({
+                isUser: true,
+                isUsername: false
+               });
+
+                
+           }else{
+
+              that.setState({
+                isUser: false,
+                isUsername: true
+               });
+
+
+           }
+
+            
+
+              // that.onRead();
+           
+          })
+
+         //console.log(that.state.isUser)
+    }
+
   
 
   componentDidMount() {
@@ -77,6 +153,9 @@ class Setting extends Component {
                 imageId
                 imageUrl
                 bio
+                facebook
+                instagram
+                twitter
               }
              
               }
@@ -117,6 +196,9 @@ class Setting extends Component {
               firstName:results.data.User.member.firstName,
               lastName:results.data.User.member.lastName,
               bio:results.data.User.member.bio,
+              facebook:results.data.User.member.facebook,
+              instagram:results.data.User.member.instagram,
+              twitter:results.data.User.member.twitter,
               imageUrl:results.data.User.member.imageUrl,
               imageId:results.data.User.member.imageId,
               memberId:results.data.User.member.id,
@@ -136,7 +218,30 @@ class Setting extends Component {
   }
 
 
+renderTaken(){
 
+ if( this.state.isUser == true){
+
+   return(
+
+      <FormFeedback style={{color:'red', display:'none'}}> Username is already taken</FormFeedback>
+
+    )
+
+ }
+  
+ else{
+
+   
+   return(
+
+      <FormFeedback style={{color:'green', display:'none'}}> Username is available </FormFeedback>
+
+    )
+ }
+
+
+}
    
 
 ////////////////////////////
@@ -203,6 +308,7 @@ renderThumb(){
 
 
 
+
   render() {
 
     if(window.localStorage.getItem('uid')== null && window.localStorage.getItem('nordic') == null ){
@@ -217,7 +323,41 @@ renderThumb(){
 
   }
   if (this.state.loading) {
-      return (<div></div>)
+      return (
+
+         <div>
+
+           <section className="article-detail-newyork">
+                <div className="container">
+                     <div className="row">
+
+                          <div className="col-md-2"></div>
+                          <div className="col-md-8">
+                            
+                            <div className="new-content">
+                    
+                              <div className="post-author-info-top">
+                                 <div className="main-title" style={{marginBottom:'70px'}}>
+
+                                   <h4><strong>Account</strong> Settings</h4>
+                                 </div>
+                              </div>
+
+                              Loading...
+                            </div>
+
+
+                          </div>
+
+                     </div>
+                </div>
+
+            </section>
+
+
+         </div>
+
+         )
     }
    
 
@@ -227,8 +367,9 @@ renderThumb(){
                   lower: true          
                 })
 
-   var str = this.state.username;
+    var str = this.state.username;
     const username = str.replace(/\s+/g, ''); 
+
 
     const newuser = username.toLowerCase();
     
@@ -236,6 +377,28 @@ renderThumb(){
   
 
     return (
+
+
+    <div>
+    <MetaTags>
+                <title>Settings | Nomadic – Online Publishing Platform for Everyone</title>
+                <meta name="description" content="Welcome to Nomadic, a place to publishing, read, write the stories. Every day, thousands of read, write, and share important stories on Nomadic." />
+                <meta property="og:title" content="Nomadic – Online Publishing Platform for Everyone" />
+                <meta property="og:description" content="Welcome to Nomadic, a place to publishing, read, write the stories. Every day, thousands of read, write, and share important stories on Nomadic." />
+                <meta property="og:image" content="https://res.cloudinary.com/spazeeid/image/upload/v1521322663/cover_jjet5b.jpg" />
+                <meta property="og:type" content="article" />
+                <meta property="og:url" content="https://www.nomadic.co.id/" />
+
+                <meta name="twitter:card" value="Welcome to Nomadic, a place to publishing, read, write the stories. Every day, thousands of read, write, and share important stories on Nomadic." />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:site" content="@NomadicId" />
+                <meta name="twitter:title" content="Nomadic – Online Publishing Platform for Everyone" />
+                <meta name="twitter:description" content="Welcome to Nomadic, a place to publishing, read, write the stories. Every day, thousands of read, write, and share important stories on Nomadic." />
+                <meta name="twitter:creator" content="@NomadicId" />
+                <meta name="twitter:image:src" content="https://res.cloudinary.com/spazeeid/image/upload/v1521322663/cover_jjet5b.jpg" />
+
+            </MetaTags>
+      
       
   
      <section className="article-detail-newyork">
@@ -262,12 +425,17 @@ renderThumb(){
                             <Label sm={2} style={{height:'50px', fontSize:'16px', fontWeight:'600'}}>Username</Label>
                             <Col sm={10}>
                               <Input type="text" value={this.state.username} name="username"  placeholder="username" style={{height:'50px', fontSize:'16px'}}
-                                          onChange={(e) => this.setState({username: e.target.value})}
+                                          onChange={(e) => this.setState({username: e.target.value, slug: document.getElementById("slug").value})}
                                           onKeyUp={(e) => this.setState({slug: document.getElementById("slug").value})}
+                                          onKeyDown={this.handleChange}
 
                               />
-                             <input type="text" id="slug" value={newuser} name="slug" className="form-control" placeholder="Slug" style={{display:'none'}}
-                              onChange={(e) => this.setState({slug: e.target.value})}
+
+                              {this.renderTaken()}
+                              
+                             <input type="hidden" id="slug" value={newuser} name="slug" className="form-control" placeholder="Slug" style={{display:'none'}}
+                              onChange={ (e) => this.setState({slug: e.target.value})}
+
 
                              />
                             </Col>
@@ -322,6 +490,41 @@ renderThumb(){
                           </FormGroup>
 
                            <FormGroup row>
+                            <Label sm={2} style={{height:'50px', fontSize:'16px', fontWeight:'600'}}>Facebook</Label>
+                            <Col sm={10}>
+                              <Input type="text" value={this.state.facebook} name="facebook"  placeholder="facebook link" style={{height:'50px', fontSize:'16px'}}
+                                          onChange={(e) => this.setState({facebook: e.target.value})}
+                                         
+
+                              />
+                             
+                            </Col>
+                          </FormGroup>
+                           <FormGroup row>
+                            <Label sm={2} style={{height:'50px', fontSize:'16px', fontWeight:'600'}}>Instagram</Label>
+                            <Col sm={10}>
+                              <Input type="text" value={this.state.instagram} name="instagram"  placeholder="instagram link" style={{height:'50px', fontSize:'16px'}}
+                                          onChange={(e) => this.setState({instagram: e.target.value})}
+                                         
+
+                              />
+                             
+                            </Col>
+                          </FormGroup>
+
+                           <FormGroup row>
+                            <Label sm={2} style={{height:'50px', fontSize:'16px', fontWeight:'600'}}>Twitter</Label>
+                            <Col sm={10}>
+                              <Input type="text" value={this.state.twitter} name="twitter"  placeholder="twitter link" style={{height:'50px', fontSize:'16px'}}
+                                          onChange={(e) => this.setState({twitter: e.target.value})}
+                                         
+
+                              />
+                             
+                            </Col>
+                          </FormGroup>
+
+                           <FormGroup row>
                           <Label sm={2} style={{height:'50px', fontSize:'16px', fontWeight:'600'}}>Avatar</Label>
                           <Col sm={6}>
                             <Dropzone
@@ -354,10 +557,14 @@ renderThumb(){
 
                   <FormGroup row>
                             <Label sm={2} style={{height:'50px', fontSize:'16px', fontWeight:'600'}}></Label>
+
+
                             <Col sm={10}>
+                             {this.state.username &&
+
                               <div onClick={this.handleSave} style={{background:'#000', padding:'10px 15px', color:'#fff', width:'150px', cursor:'pointer', textAlign:'center',float:'left', marginRight:'20px'}}>Save</div>     
                           
-                             
+                             }
                             </Col>
                           </FormGroup>
                          
@@ -376,6 +583,7 @@ renderThumb(){
 
         </div>
     </section>
+    </div>
 
     )
   }
@@ -388,13 +596,19 @@ renderThumb(){
       console.warn('only logged in users can create new posts')
       return
     }
+
+    if (this.state.isUser == true && this.state.isUsername == false) {
+      toast('Username Already Taken', { type: toast.TYPE.ERROR, autoClose: 2000 })
+  
+      return
+    }
     
     const userId = localStorage.getItem('uid');
-    const { id, username, bio, email, imageId, imageUrl, firstName, lastName, memberId} = this.state
+    const { id, username, bio, email, imageId, imageUrl, firstName, lastName, memberId, facebook, instagram, twitter} = this.state
   
-    await this.props.createSavexMutation({variables: {id,  username, bio, email, imageId, imageUrl, firstName, lastName, memberId}})
+    await this.props.createSavexMutation({variables: {id,  username, bio, email, imageId, imageUrl, firstName, lastName, memberId, facebook, instagram, twitter}})
 
-      toast('update uccess', { type: toast.TYPE.SUCCESS, autoClose: 2000 }, setTimeout("location.href = '/me/settings';",2000))
+      toast('update success', { type: toast.TYPE.SUCCESS, autoClose: 2000 }, setTimeout("location.href = '/me/settings';",2000))
   
   }
 }
@@ -422,11 +636,14 @@ const CREATE_SAVEX_MUTATION = gql`
       $imageId: String,
       $imageUrl: String,
       $lastName: String,
+      $facebook: String,
+      $instagram: String,
+      $twitter: String,
   ) {
      updateUser(id: $id, email: $email, username: $username, avatar: $imageUrl){
                 id
               }
-              updateMember( id: $memberId, imageId: $imageId, imageUrl: $imageUrl, firstName: $firstName, lastName: $lastName, bio: $bio){
+              updateMember( id: $memberId, imageId: $imageId, imageUrl: $imageUrl, firstName: $firstName, lastName: $lastName, bio: $bio, facebook: $facebook, instagram: $instagram, twitter: $twitter){
                 id
               }
   }

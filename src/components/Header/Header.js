@@ -152,7 +152,8 @@ renderButton(){
                 <DropdownItem divider/>
                 <a href="/me/stories/drafts"><DropdownItem style={{margin:'5px 0'}}>Drafts</DropdownItem></a> 
                 <a href="/me/stories/publish"><DropdownItem style={{margin:'5px 0'}}>Publish</DropdownItem></a> 
-                <a href="/me/publications"><DropdownItem style={{margin:'5px 0'}}>Publications</DropdownItem></a> 
+                <a href="/me/publications"><DropdownItem style={{margin:'5px 0'}}>Publications</DropdownItem></a>
+                 <a href="/me/bookmarks"><DropdownItem style={{margin:'5px 0'}}>Bookmarks</DropdownItem></a>  
                 <a href="/me/topics/interest"><DropdownItem style={{margin:'5px 0'}}>Interests</DropdownItem></a> 
                 <a href="/me/settings"><DropdownItem style={{margin:'5px 0'}}>Settings</DropdownItem></a> 
                 <DropdownItem  onClick={this._logout} style={{margin:'5px 0'}}> Logout</DropdownItem>

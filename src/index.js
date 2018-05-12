@@ -188,6 +188,14 @@ const Welcome = Loadable({
 });
 
 
+const Bookmarks = Loadable({
+ loader: () => fakeDelay(500).then(() => import('./views/Bookmark/')),
+  loading: Loading,
+  timeout: 10000, // 10 seconds
+
+});
+
+
 // const Privacy = Loadable({
 //  loader: () => fakeDelay(500).then(() => import('./views/Privacy/')),
 //   loading: Loading,
@@ -248,6 +256,7 @@ render(
              <Route path="/me/stories/drafts" component={Draft} />
              <Route path="/me/stories/draft/edit/:id" component={EditDraft} />
              <Route path="/me/stories/publish" component={Publish} />
+             <Route path="/me/bookmarks" component={Bookmarks} />
              <Route path="/me/topics/interest" component={Interest} />
              <Route path="/me/publications" component={Publication} />
              <Route path="/me/publication/edit/:id" component={EditPublish} />

@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 
 import {Cloudinary_Name} from '../../views/Api/';
 import {Image} from 'cloudinary-react';
-
+import { graphql } from 'react-apollo'
+import gql from 'graphql-tag'
 import moment from 'moment';
 import 'moment/locale/id';
 moment.locale('id');
@@ -14,8 +15,26 @@ class List extends Component {
 static propTypes = {
   post: PropTypes.object,
   refresh: PropTypes.func,
+  mutatePost: PropTypes.func,
 };
 
+constructor(props) {
+    super(props);
+   this.state = {isToggleOn: true};
+
+
+  }
+
+
+renderBookmark(){
+
+  if(this.state.isToggleOn == true) { 
+            return (<i className="far fa-bookmark" onClick={this.handleBookmark} style={{cursor: 'pointer'}}></i>);
+        } else { 
+            return (<i className="fas fa-bookmark" onClick={this.handleUnbook} style={{cursor: 'pointer'}}></i>);
+        } 
+
+}
 
 
 renderThumb(){
@@ -25,7 +44,7 @@ renderThumb(){
 
      return(
 
-         <img src={pic} className="img-circle" style={{margin:'0px 8px 0 5px', width:'33px'}} />
+         <img src={pic} className="img-circle" style={{margin:'5px 0 0 5px', width:'33px'}} />
 
       )
 
@@ -94,7 +113,7 @@ renderPublish(){
                                 <a href={`/@${this.props.post.user.username}/${this.props.post.slug}`}>  <h4 className="post-title">{this.props.post.title}</h4></a>
                                  <p>{this.props.post.headline}</p>
                                  <span className="post-author">{this.renderThumb()}<a href={`/@${this.props.post.user.username}`}>{this.props.post.user.member.firstName} {this.props.post.user.member.lastName}</a></span><span className="post-date">{this.renderPublish()} {moment(this.props.post.createdAt).format('ll')},  {this.props.post.reading} min read</span> 
-                                <span className="pull-right"  style={{fontSize:'18px'}} ><i className="far fa-bookmark"></i></span>
+                                <span className="pull-right"  style={{fontSize:'18px'}} >{this.renderBookmark()}</span>
                                </div>
 
                              </div>
@@ -110,9 +129,30 @@ renderPublish(){
 
     )
   }
+
+  handleBookmark = async () => {
+    await this.props.mutatePost({
+      variables: {
+        userId: localStorage.getItem('uid'),
+        postId: this.props.post.id,
+      }
+    })
+
+     this.setState({ isToggleOn : false} );
+  }
 }
 
+const createBookmark = gql`
+  mutation createBookmark($userId: ID, $postId:ID) {
+    createBookmark(userId: $userId, postId: $postId) {
+      id
+    }
+  }
+`
 
 
 
-export default List;
+
+const SliderWithMutation = graphql(createBookmark, {name : 'mutatePost'})(List)
+
+export default SliderWithMutation

@@ -226,7 +226,7 @@ renderThumb(){
      return(
          <div>
          <img src={this.state.pic} className="img-circle hidden-xs hidden-sm"  alt={this.state.title}/>
-         <img src={this.state.pic} className="img-circle hidden-lg hidden-md"  alt={this.state.title} style={{width:'30px',float:'left', marginRight:'10px'}}/>
+         <img src={this.state.pic} className="img-circle hidden-lg hidden-md"  alt={this.state.title} style={{width:'50px',float:'left', marginRight:'10px'}}/>
         </div>
       )
 
@@ -236,7 +236,7 @@ renderThumb(){
        <div>
          <img src={this.state.avatar} className="img-circle hidden-xs hidden-sm"  alt={this.state.title}/>
 
-         <img src={this.state.avatar} className="img-circle hidden-md hidden-lg"  alt={this.state.title} style={{width:'30px', float:'left', marginRight:'10px'}}/>
+         <img src={this.state.avatar} className="img-circle hidden-md hidden-lg"  alt={this.state.title} style={{width:'50px', float:'left', marginRight:'10px'}}/>
      </div>
       )
 

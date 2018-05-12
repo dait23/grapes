@@ -101,7 +101,7 @@ renderThumb(){
 
                      <div className="col-md-3 col-sm-3 col-xs-3">
                       <figure className="post-image hidden-md hidden-lg">
-                      <Image cloudName={Cloudinary_Name} publicId={this.props.post.imageId} gravity="center" height="65" width="65"  crop="thumb"/> 
+                      <Image cloudName={Cloudinary_Name} publicId={this.props.post.imageId} gravity="center" height="70" width="70"  crop="thumb"/> 
                       </figure>
                      
 

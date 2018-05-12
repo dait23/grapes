@@ -1422,7 +1422,7 @@ main.move-left{-webkit-transform: translateX(-300px);-moz-transform: translateX(
 .grids-2cols ul li{ width:100% !important;}
 .grids-3cols ul li{ width:100% !important;}
 .grids-4cols ul li{ width:100% !important;}
-.custom-5cols ul li{ width:50%;}
+.custom-5cols ul li{ width:100%;}
 .post-type-california .post-image{ width:100%;}
 .post-type-california .post-content{ width:100%; padding:0;}
 .post-type-florida .post-content .post-title{ font-size:13px;height: 70px}

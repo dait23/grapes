@@ -31,9 +31,9 @@ class List extends React.Component {
 renderBookmark(){
 
   if(this.state.isToggleOn == true) { 
-            return (<i className="far fa-bookmark" onClick={this.handleBookmark} style={{cursor: 'pointer'}}></i>);
+            return (<i className="far fa-bookmark" onClick={this.handleBookmark} style={{cursor: 'pointer', fontSize:'18px', color:'#000'}}></i>);
         } else { 
-            return (<i className="fas fa-bookmark" onClick={this.handleUnbook} style={{cursor: 'pointer'}}></i>);
+            return (<i className="fas fa-bookmark" onClick={this.handleUnbook} style={{cursor: 'pointer',  fontSize:'18px', color:'#000'}}></i>);
         } 
 
 }
@@ -80,7 +80,7 @@ renderThumb(){
           
                     <li>
                         
-                      <div className="post-type-florida">
+                      <div className="post-type-florida hidden-xs hidden-sm">
                       <figure className="post-image hidden-sm hidden-xs"><Image cloudName={Cloudinary_Name} publicId={this.props.post.imageId} gravity="center" height="224" width="224" crop="thumb"/> </figure>
                        <figure className="post-image hidden-md hidden-lg"><Image cloudName={Cloudinary_Name} publicId={this.props.post.imageId} gravity="center" height="100"  crop="thumb"/> </figure>
                       <div className="post-content">
@@ -94,6 +94,25 @@ renderThumb(){
                        <span className="pull-right" style={{fontSize:'15px'}}>{this.renderBookmark()}</span>
                       </div>
         
+                    </div>
+
+
+                    <div className="row hidden-md hidden-lg" style={{padding:'10px'}}>
+
+                     <div className="col-md-3 col-sm-3 col-xs-3">
+                      <figure className="post-image hidden-md hidden-lg">
+                      <Image cloudName={Cloudinary_Name} publicId={this.props.post.imageId} gravity="center" height="65" width="65"  crop="thumb"/> 
+                      </figure>
+                     
+
+                     </div>
+                      <div className="col-md-9 col-sm-9 col-xs-9">
+
+                        <h4 style={{marginTop:'-5px'}}> <a href={`/@${this.props.post.user.username}/${this.props.post.slug}`} style={{fontSize:'14px', fontWeight:'600', fontFamily:'Poppins, sans-serif'}}>{this.props.post.title}</a></h4>
+                       <div className="post-metas" style={{color:'#9d9d9d', fontSize:'11px'}}> <span className="likes pull-left">{createDT}  - {this.props.post.reading} min read</span> <span className="views pull-right">{this.renderBookmark()}</span> </div>
+                      </div>
+
+
                     </div>
 
                     </li>

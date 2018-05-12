@@ -17,7 +17,7 @@ class Bar extends Component {
     return (
       
      
-       <ProgressBar isLoading={this.state.isLoading} height="3px" color="#1C9963" />
+       <ProgressBar isLoading={this.state.isLoading} height="2px" color="#1C9963" />
 
 
     )

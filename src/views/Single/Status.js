@@ -11,7 +11,7 @@ class Status extends Component {
     return (
       
      
-       <div className="alertbar">
+       <div className="alertbar hidden-sm hidden-xs">
         <div className="container text-center">
           <img src={this.props.avatar} className="img-circle" style={{width:'40px'}} />&nbsp; Never miss a <b>story</b> from <b>{this.props.name}</b>, get weekly updates in your inbox. <a className="btn subscribe">Get Started</a>
         </div>

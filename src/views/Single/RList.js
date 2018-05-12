@@ -80,7 +80,7 @@ class List extends React.Component {
                        
                             <div className="col-sm-1"></div>
                                 
-                                <div className="col-sm-10">
+                                <div className="col-sm-10" style={{padding:'0px 20px 0 20px'}}>
 
                                 
                                  <div className="row" style={{border:'1px solid #ccc', padding:'20px 10px', background:'#fff'}}>

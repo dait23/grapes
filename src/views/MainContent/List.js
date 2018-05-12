@@ -44,7 +44,7 @@ renderThumb(){
 
      return(
 
-         <img src={pic} className="img-circle" style={{margin:'5px 0 0 5px', width:'33px'}} />
+         <img src={pic} className="img-circle hidden-sm hidden-xs" style={{margin:'5px 0 0 5px', width:'33px'}} />
 
       )
 
@@ -52,7 +52,7 @@ renderThumb(){
 
         return(
 
-         <img src={this.props.post.user.avatar} className="img-circle" style={{margin:'0px 5px 0 5px', width:'30px'}} />
+         <img src={this.props.post.user.avatar} className="img-circle hidden-sm hidden-xs" style={{margin:'0px 5px 0 5px', width:'30px'}} />
 
       )
 
@@ -100,20 +100,31 @@ renderPublish(){
                       <div className="row">
                        <div className="post-type-california">
 
-                             <div className="col-md-2 col-sm-12 col-xs-12">
+                             <div className="col-md-2 col-sm-3 col-xs-3">
                               
                                <a href={`/@${this.props.post.user.username}/${this.props.post.slug}`}>
-                                  <figure className="post-image-draft"><Image cloudName={Cloudinary_Name} publicId={this.props.post.imageId}  className="img-responsive" gravity="center" crop="thumb" height="170" width="170" /></figure>
+                                  <figure className="post-image-draft hidden-sm hidden-xs"><Image cloudName={Cloudinary_Name} publicId={this.props.post.imageId}  className="img-responsive" gravity="center" crop="thumb" height="170" width="170" /></figure>
+                                  <figure className="post-image-draft hidden-md hidden-lg"><Image cloudName={Cloudinary_Name} publicId={this.props.post.imageId}  className="img-responsive" gravity="center" crop="thumb" height="125" width="125" /></figure>
                               </a>
 
                              </div>
-                             <div className="col-md-10 col-sm-12 col-xs-12">
+                             <div className="col-md-10 col-sm-9 col-xs-9">
                                  
                                  <div className="post-content-page">
                                 <a href={`/@${this.props.post.user.username}/${this.props.post.slug}`}>  <h4 className="post-title">{this.props.post.title}</h4></a>
-                                 <p>{this.props.post.headline}</p>
-                                 <span className="post-author">{this.renderThumb()}<a href={`/@${this.props.post.user.username}`} style={{marginLeft:'8px'}}>{this.props.post.user.member.firstName} {this.props.post.user.member.lastName}</a></span><span className="post-date">{this.renderPublish()} {moment(this.props.post.createdAt).format('ll')},  {this.props.post.reading} min read</span> 
-                                <span className="pull-right"  style={{fontSize:'18px'}} >{this.renderBookmark()}</span>
+                                 <p className="hidden-sm hidden-xs">{this.props.post.headline}</p>
+                                 <span className="post-author hidden-sm hidden-xs">
+                                 {this.renderThumb()}<a href={`/@${this.props.post.user.username}`} style={{marginLeft:'8px'}}>{this.props.post.user.member.firstName} {this.props.post.user.member.lastName}</a>
+                                 </span>
+
+                                  <span className="post-author hidden-md hidden-lg">
+                                 {this.renderThumb()}<a href={`/@${this.props.post.user.username}`} style={{marginLeft:'0px'}}>{this.props.post.user.member.firstName} {this.props.post.user.member.lastName}</a>
+                                 </span>
+
+
+                                 <span className="post-date">{this.renderPublish()} {moment(this.props.post.createdAt).format('ll')},  {this.props.post.reading} min read</span> 
+                                
+                                    <span className="pull-right"  style={{fontSize:'18px'}} >{this.renderBookmark()}</span>
                                </div>
 
                              </div>

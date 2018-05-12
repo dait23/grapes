@@ -26,7 +26,7 @@ renderThumb(){
 
      return(
 
-         <img src={pic} className="img-circle" style={{margin:'0px 5px 0 5px', width:'33px'}} />
+         <img src={pic} className="img-circle  hidden-xs hidden-sm" style={{margin:'5px 0 0 5px', width:'33px'}} />
 
       )
 
@@ -34,7 +34,7 @@ renderThumb(){
 
         return(
 
-         <img src={this.props.post.user.avatar} className="img-circle" style={{margin:'0px 5px 0 5px', width:'30px'}} />
+         <img src={this.props.post.user.avatar} className="img-circle  hidden-xs hidden-sm" style={{margin:'0px 5px 0 5px', width:'30px'}} />
 
       )
 
@@ -59,14 +59,32 @@ renderThumb(){
              
               <div className="col-md-4 col-sm-4">
               <div className="post-type-florida">
-                 <figure className="post-image"><Image cloudName={Cloudinary_Name} publicId={this.props.post.imageId}  crop="thumb" height="150" /></figure>
-                <div className="post-content" style={{height:'150px'}}>
+
+               <div className="row">
+                  
+                   <div className="col-sm-12 col-xs-4">
+                      <figure className="post-image hidden-xs hidden-sm"><Image cloudName={Cloudinary_Name} publicId={this.props.post.imageId}  crop="thumb" height="150" /></figure>
+                      <figure className="post-image hidden-md hidden-lg"><Image cloudName={Cloudinary_Name} publicId={this.props.post.imageId}  crop="thumb" width="100" height="100" /></figure>
+                   </div>
+
+                   <div className="col-sm-12 col-xs-8">
+                      <div className="post-content" style={{height:'150px'}}>
                   <div className="post-metas"> <span className="likes pull-left">{createDT}</span> <span className="views pull-right">{this.props.post.reading} min read</span> </div>
                 
                   <h4 className="post-title" style={{height:'60px'}}><a href={`/@${this.props.post.user.username}/${this.props.post.slug}`}>{this.props.post.title}</a></h4>
                   <span className="post-author">{this.renderThumb()}<a>{this.props.post.user.member.firstName} {this.props.post.user.member.lastName}</a></span>
                   <span className="pull-right" style={{fontSize:'15px'}}><i className="far fa-bookmark"></i></span> 
                 </div> 
+                   </div>
+
+                </div>
+
+
+
+
+
+                 
+                
                 </div>
               </div>
 

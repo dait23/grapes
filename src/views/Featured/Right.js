@@ -21,7 +21,7 @@ const Story = inject('featuredStore')(
 
         if (error) console.error(error);
         else if (loading) return(
-            <div className="post-type-kansas">
+            <div className="post-type-kansas hidden-sm hidden-xs">
 
           
            <ReactPlaceholder type='rect' showLoadingAnimation={true} delay={1000} ready={false} color='#E0E0E0' style={{ width: '100%', height: 300 }}>
@@ -37,7 +37,7 @@ const Story = inject('featuredStore')(
 
         
         
-           <div>
+           <div className="hidden-sm hidden-xs">
 
              {rights.map((post) => (
             <List

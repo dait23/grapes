@@ -145,9 +145,9 @@ if (this.props.data.loading) {
             <div className="row" style={{marginBottom:'50px', marginTop:'30px'}}>
              <ToastContainer autoClose={2000} />
 
-               <div className="col-sm-1"></div>
+               <div className="col-md-1 col-sm-2"></div>
                                 
-                    <div className="col-sm-10">
+                    <div className="col-md-10 col-sm-9" style={{padding:'20px'}}>
 
                          <div className="row" style={{border:'1px solid #ccc', padding:'20px 10px', background:'#fff'}}>
 

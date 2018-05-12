@@ -23,7 +23,7 @@ const Story = inject('featuredStore')(
         else if (loading) return(
             
                   <div>
-              <div className="post-type-newyork">
+              <div className="post-type-newyork hidden-sm hidden-xs">
                 <figure className="post-image">
 
                    <ReactPlaceholder type='rect' showLoadingAnimation={true} delay={1000} ready={false} color='#E0E0E0' style={{ width: 135, height: 135 }}>
@@ -116,7 +116,7 @@ const Story = inject('featuredStore')(
 
         return (
 
-        <div>
+        <div className="hidden-sm hidden-xs">
 
              {midles.map((post) => (
             <List

@@ -23,7 +23,7 @@ class Home extends Component {
                
                <div className="col-md-8">
                   <h1 style={{fontFamily:'Poppins, sans-serif',  fontSize:'33px', fontWeight:'600'}}>Welcome to Nomadic</h1>
-                    <p className="lead" style={{fontSize:'22px', fontWeight:'500',  fontFamily:'-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif'}}>Publishing Place for Everyone</p>
+                    <p className="lead" style={{fontSize:'22px', fontWeight:'500',  fontFamily:'-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif'}}>Publishing place for everyone</p>
                     <hr className="my-2" />
                     <p style={{fontSize:'14px'}}>a free place to create, read storie or publishing ideas
  <br/> follow your interest topic, publisher straight on your homepage.</p>

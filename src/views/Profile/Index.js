@@ -162,7 +162,7 @@ class Profile extends Component {
 
      return(
 
-       <div>
+       <div className="row">
 
           {this.state.posts.map((post) => (
                       <Story

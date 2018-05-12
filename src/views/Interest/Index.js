@@ -230,7 +230,7 @@ renderTopic(){
 
     
     return (
-     <div>
+    <div>
     <MetaTags>
                 <title>Topics Interest | Nomadic – Online Publishing Platform for Everyone</title>
                 <meta name="description" content="Welcome to Nomadic, a place to publishing, read, write the stories. Every day, thousands of read, write, and share important stories on Nomadic." />

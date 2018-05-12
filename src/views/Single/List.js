@@ -40,9 +40,11 @@ class List extends React.Component {
       else{
 
         return(
+             <div>
+              <Image cloudName={Cloudinary_Name} publicId={this.props.page.imageId} className="hidden-sm hidden-xs" height="150" crop="thumb" />
 
-             <Image cloudName={Cloudinary_Name} publicId={this.props.page.imageId}  height="150" crop="thumb" />
-
+              <Image cloudName={Cloudinary_Name} publicId={this.props.page.imageId} className="hidden-lg hidden-md"  height="80" crop="thumb"  gravity="center"/>
+</div>
           )
       }      
 
@@ -56,7 +58,7 @@ class List extends React.Component {
 
      return(
 
-         <img src={pic} className="img-circle"  />
+         <img src={pic} className="img-circle hidden-sm hidden-xs"  />
 
       )
 
@@ -64,7 +66,7 @@ class List extends React.Component {
 
         return(
 
-         <img src={this.props.page.user.avatar} className="img-circle"  />
+         <img src={this.props.page.user.avatar} className="img-circle hidden-sm hidden-xs"  />
 
       )
 
@@ -85,7 +87,7 @@ class List extends React.Component {
                     <div>
 
                        
-                       <div className="col-md-4 col-sm-4">
+                       <div className="col-md-4 col-sm-6 col-xs-6">
                         <div className="post-type-florida">
                           <figure className="post-image">{this.renderThumb()}</figure>
                            <div className="post-content">

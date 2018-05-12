@@ -96,7 +96,6 @@ onRead() {
               Post(slug: $slug){
               id
               title
-              slug
               headline
               body
               reading
@@ -169,7 +168,7 @@ onRead() {
 
            if ( results.data.Post == null){
 
-               window.location= "/404";
+               //window.location= "/";
 
            }else{
 
@@ -225,17 +224,20 @@ renderThumb(){
     if(this.state.avatar == '' ){
 
      return(
-
-         <img src={this.state.pic} className="img-circle"  alt={this.state.title}/>
-
+         <div>
+         <img src={this.state.pic} className="img-circle hidden-xs hidden-sm"  alt={this.state.title}/>
+         <img src={this.state.pic} className="img-circle hidden-lg hidden-md"  alt={this.state.title} style={{width:'30px',float:'left', marginRight:'10px'}}/>
+        </div>
       )
 
     }else{
 
         return(
+       <div>
+         <img src={this.state.avatar} className="img-circle hidden-xs hidden-sm"  alt={this.state.title}/>
 
-         <img src={this.state.avatar} className="img-circle"  alt={this.state.title}/>
-
+         <img src={this.state.avatar} className="img-circle hidden-md hidden-lg"  alt={this.state.title} style={{width:'30px', float:'left', marginRight:'10px'}}/>
+     </div>
       )
 
     }
@@ -427,7 +429,6 @@ renderComment(){
                 <meta property="og:description" content={this.state.headline} />
                 <meta property="og:image" content={this.state.imageUrl} />
                 <meta property="og:type" content="article" />
-                <meta property="og:site_name" content="nomadic" />
                 <meta property="og:url" content={`https://nomadic.co.id/@${this.state.username}/${this.state.slug}`} />
 
                 <meta name="twitter:card" value={this.state.headline} />
@@ -457,7 +458,7 @@ renderComment(){
                           <p className="author-info">{this.state.bio}. <br /><span  style={{color:'#baba',fontSize:'11px' }}>{createDT} - {this.state.reading} min read</span></p>
                         </div>
                         
-                       <div className="col-md-6"><span className="pull-right" style={{color:'#666',fontSize:'12px',padding:'10px 0 0 0'}}> <Share /></span></div>
+                       <div className="col-md-6"><span className="pull-right hidden-xs hidden-sm" style={{color:'#666',fontSize:'12px',padding:'10px 0 0 0'}}> <Share /></span></div>
                     </div>
 
                         <Image cloudName={Cloudinary_Name} publicId={this.state.imageId}  crop="scale"  alt={this.state.title}/>

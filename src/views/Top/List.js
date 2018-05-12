@@ -3,7 +3,8 @@ import { Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {Cloudinary_Name} from '../../views/Api/';
 import {Image} from 'cloudinary-react';
-
+import { graphql } from 'react-apollo'
+import gql from 'graphql-tag'
 import moment from 'moment';
 import 'moment/locale/id';
 moment.locale('id');
@@ -15,7 +16,27 @@ class List extends React.Component {
   static propTypes = {
     post: PropTypes.object,
     refresh: PropTypes.func,
+     mutatePost: PropTypes.func,
   }
+
+
+  constructor(props) {
+    super(props);
+   this.state = {isToggleOn: true};
+
+
+  }
+
+
+renderBookmark(){
+
+  if(this.state.isToggleOn == true) { 
+            return (<i className="far fa-bookmark" onClick={this.handleBookmark} style={{cursor: 'pointer'}}></i>);
+        } else { 
+            return (<i className="fas fa-bookmark" onClick={this.handleUnbook} style={{cursor: 'pointer'}}></i>);
+        } 
+
+}
 
 
 renderThumb(){
@@ -25,7 +46,7 @@ renderThumb(){
 
      return(
 
-         <img src={pic} className="img-circle" style={{margin:'0px 5px 0 5px', width:'33px'}} />
+         <img src={pic} className="img-circle" style={{margin:'5px 0 0 5px', width:'33px'}} />
 
       )
 
@@ -69,7 +90,7 @@ renderThumb(){
                         <span className="post-author">
                             {this.renderThumb()}<Link to={`/@${this.props.post.user.username}`}>{this.props.post.user.member.firstName} {this.props.post.user.member.lastName}</Link>
                         </span>
-                       <span className="pull-right" style={{fontSize:'15px'}}><i className="far fa-bookmark"></i></span>
+                       <span className="pull-right" style={{fontSize:'15px'}}>{this.renderBookmark()}</span>
                       </div>
         
                     </div>
@@ -82,7 +103,32 @@ renderThumb(){
   }
 
 
+   handleBookmark = async () => {
+    await this.props.mutatePost({
+      variables: {
+        userId: localStorage.getItem('uid'),
+        postId: this.props.post.id,
+      }
+    })
+
+     this.setState({ isToggleOn : false} );
+  }
+
+
 }
 
 
-export default List
+const createBookmark = gql`
+  mutation createBookmark($userId: ID, $postId:ID) {
+    createBookmark(userId: $userId, postId: $postId) {
+      id
+    }
+  }
+`
+
+
+
+
+const SliderWithMutation = graphql(createBookmark, {name : 'mutatePost'})(List)
+
+export default SliderWithMutation

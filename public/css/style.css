@@ -1451,7 +1451,7 @@ main.move-left{-webkit-transform: translateX(-300px);-moz-transform: translateX(
 }
 .article-detail-newyork p:first-of-type{
 
-font-size: 18px
+font-size: 20px
 
 }
 .article-detail-newyork .post-content {
@@ -1465,7 +1465,7 @@ font-size: 18px
     float: left;
     padding-top: 0px;
 }
-.article-detail-newyork p{font-size: 18px}
+.article-detail-newyork p{font-size: 20px}
 .mega-grids ul li .post-type-kansas .post-content .post-title{ font-size:20px !important; line-height:22px !important;}
 .sticky .sidebar .trend-posts{ width:100%;}
 .sticky .sidebar .side-post{ width:100%;}

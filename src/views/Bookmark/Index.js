@@ -14,7 +14,7 @@ class Bookmarks extends Component {
 renderList(){
  const inListx = this.props.data.allBookmarks || []
   
-  if(this.props.data.allPosts == ''){
+  if(this.props.data.allBookmarks == ''){
 
    
     return(

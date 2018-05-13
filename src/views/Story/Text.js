@@ -298,7 +298,7 @@ handlePost = async () => {
     const userId = localStorage.getItem('uid');
     const { id, title, slug, body, imageId, imageUrl, topicsIds, typeId, headline, reading,  isPublished } = this.state
   
-    await this.props.createPostMutation({variables: { id, title, slug, body,  userId, imageId, imageUrl, topicsIds, headline, reading , isPublished }})
+    await this.props.createPostMutation({variables: { id, title, slug, body,  userId, imageId, imageUrl, topicsIds, headline, reading  }})
      toast('update & Publish Success', { type: toast.TYPE.SUCCESS, autoClose: 2000 }, setTimeout("location.href = '/me/stories/publish';",2000))
   }
 
@@ -311,9 +311,9 @@ handlePost = async () => {
     }
     
     const userId = localStorage.getItem('uid');
-    const {id, title, slug, body, imageId, imageUrl, topicsIds, typeId, headline, reading} = this.state
+    const {id, title, slug, body, imageId, imageUrl, topicsIds, typeId, headline, reading, isPublished} = this.state
   
-    await this.props.createSaveMutation({variables: { id, title, slug, body,  userId, imageId, imageUrl, topicsIds, headline, reading  }})
+    await this.props.createSaveMutation({variables: { id, title, slug, body,  userId, imageId, imageUrl, topicsIds, headline, reading, isPublished  }})
 
       toast('Update Draft Success', { type: toast.TYPE.SUCCESS, autoClose: 2000 }, setTimeout("location.href = '/me/stories/drafts';",2000))
   

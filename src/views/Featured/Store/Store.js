@@ -18,7 +18,7 @@ const allLeftQuery = gql`
     AND: [{
       isPublished: true
     }, {
-      isFeatured: true
+      isLeft: true
     }]
   },orderBy: createdAt_DESC, first:1) {
         id

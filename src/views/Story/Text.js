@@ -295,10 +295,11 @@ handlePost = async () => {
       return
     }
      
+    const isPublished = true ;
     const userId = localStorage.getItem('uid');
-    const { id, title, slug, body, imageId, imageUrl, topicsIds, typeId, headline, reading,  isPublished } = this.state
+    const { id, title, slug, body, imageId, imageUrl, topicsIds, typeId, headline, reading } = this.state
   
-    await this.props.createPostMutation({variables: { id, title, slug, body,  userId, imageId, imageUrl, topicsIds, headline, reading  }})
+    await this.props.createPostMutation({variables: { id, title, slug, body,  userId, imageId, imageUrl, topicsIds, headline, reading, isPublished  }})
      toast('update & Publish Success', { type: toast.TYPE.SUCCESS, autoClose: 2000 }, setTimeout("location.href = '/me/stories/publish';",2000))
   }
 
@@ -341,6 +342,7 @@ const CREATE_POST_MUTATION = gql`
       $userId: ID,
       $topicsIds: [ID!],
       $headline: String,
+      $isPublished: Boolean
       
   ) {
     updatePost(
@@ -354,6 +356,7 @@ const CREATE_POST_MUTATION = gql`
         imageUrl:$imageUrl,
         topicsIds: $topicsIds,
         headline: $headline,
+        isPublished: $isPublished
         
 
 

@@ -53,7 +53,7 @@ class Text extends React.Component {
       typeId:'cjfvip5jfven40179i4s1w72l',
       imageId:'',
 
-      isPublished: true,
+      isPublished: false,
        userId: localStorage.getItem('uid'),
        uploadedFile: null,
         placeholder: 'Write here...',
@@ -69,7 +69,7 @@ class Text extends React.Component {
         imageUrl:this.props.imageUrl,
         imageId:this.props.imageId,
         typeId:'cjfvip5jfven40179i4s1w72l',
-        isPublished: true,
+        isPublished: false,
        userId: localStorage.getItem('uid'),
        uploadedFile: null,
        topics:this.props.topics,
@@ -298,7 +298,7 @@ handlePost = async () => {
     const userId = localStorage.getItem('uid');
     const { id, title, slug, body, imageId, imageUrl, topicsIds, typeId, headline, reading,  isPublished } = this.state
   
-    await this.props.createPostMutation({variables: { id, title, slug, body,  userId, imageId, imageUrl, topicsIds, headline, reading , isPublished }})
+    await this.props.createPostMutation({variables: { id, title, slug, body,  userId, imageId, imageUrl, topicsIds, headline, reading  }})
      toast('update & Publish Success', { type: toast.TYPE.SUCCESS, autoClose: 2000 }, setTimeout("location.href = '/me/stories/publish';",2000))
   }
 
@@ -311,9 +311,9 @@ handlePost = async () => {
     }
     
     const userId = localStorage.getItem('uid');
-    const {id, title, slug, body, imageId, imageUrl, topicsIds, typeId, headline, reading} = this.state
+    const {id, title, slug, body, imageId, imageUrl, topicsIds, typeId, headline, reading, isPublished} = this.state
   
-    await this.props.createSaveMutation({variables: { id, title, slug, body,  userId, imageId, imageUrl, topicsIds, headline, reading  }})
+    await this.props.createSaveMutation({variables: { id, title, slug, body,  userId, imageId, imageUrl, topicsIds, headline, reading, isPublished  }})
 
       toast('Update Draft Success', { type: toast.TYPE.SUCCESS, autoClose: 2000 }, setTimeout("location.href = '/me/stories/drafts';",2000))
   
@@ -341,7 +341,7 @@ const CREATE_POST_MUTATION = gql`
       $userId: ID,
       $topicsIds: [ID!],
       $headline: String,
-      $isPublished: Boolean,
+      
   ) {
     updatePost(
        id:$id,
@@ -354,8 +354,7 @@ const CREATE_POST_MUTATION = gql`
         imageUrl:$imageUrl,
         topicsIds: $topicsIds,
         headline: $headline,
-        isPublished: $isPublished,
-  
+        
 
 
     ) {
@@ -375,7 +374,8 @@ const CREATE_SAVE_MUTATION = gql`
       $imageUrl: String,
       $userId: ID,
       $topicsIds: [ID!],
-      $headline: String
+      $headline: String,
+      $isPublished: Boolean,
   ) {
     updatePost(
         id:$id,
@@ -388,6 +388,7 @@ const CREATE_SAVE_MUTATION = gql`
         imageUrl:$imageUrl,
         topicsIds: $topicsIds,
         headline: $headline,
+          isPublished: $isPublished,
   
 
 

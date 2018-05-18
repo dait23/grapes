@@ -254,6 +254,7 @@ const Queryx = gql`query allPostsx($id: ID!) {
       filter:{  
         posts_some:{
           id_starts_with:"c"
+          isPublished:true
         }
       }
       

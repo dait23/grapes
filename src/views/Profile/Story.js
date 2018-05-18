@@ -59,7 +59,7 @@ renderThumb(){
              
             
               <div className="post-type-florida">
-                 <figure className="post-image"><Image cloudName={Cloudinary_Name} publicId={this.props.post.imageId}  crop="thumb" height="130"  gravity="center" /></figure>
+                 <figure className="post-image"><Image cloudName={Cloudinary_Name} publicId={this.props.post.imageId}  crop="thumb" height="150"  gravity="center" /></figure>
                 <div className="post-content" style={{height:'150px'}}>
                   <div className="post-metas"> <span className="likes pull-left">{createDT}</span> <span className="views pull-right">{this.props.post.reading} min read</span> </div>
                 

@@ -4,7 +4,7 @@ import { graphql, compose } from 'react-apollo'
 import gql from 'graphql-tag'
 import ReactPlaceholder from 'react-placeholder';
 import "react-placeholder/lib/reactPlaceholder.css";
-import Dlist from './Dlist'
+import Dlist from './Dlistx'
 
 import NotFound from'../../views/404/'
 

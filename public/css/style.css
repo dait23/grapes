@@ -213,7 +213,13 @@ address{ font-size:15px; line-height:23px;}
 /* ALERTS */
 .alert{ width:100%; float:left; border-radius:0;}
 
-
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.5;
+    color: inherit;
+    width: 100%;
+}
 
 /* LABELS */
 .label{ border-radius:0; font-family: "Poppins", sans-serif; text-transform:uppercase; font-size:11px;} 
@@ -308,7 +314,7 @@ main.move-left{-webkit-transform: translateX(-350px);-moz-transform: translateX(
 .main-title{ width:100%; float:left; margin-bottom:30px; border-bottom:1px solid #d2d2d2; position:relative; text-transform:uppercase;}
 .main-title:before{content:''; width:60px; height:3px; background:#000; position:absolute; left:0; bottom:-2px;}
 .main-title:after{content:''; width:15px; height:3px; background:#fff; position:absolute; left:60px; bottom:-2px;}
-.main-title h4{float:left;font-size:19px; padding:12px 0; margin-bottom:12px; color:#000;}
+.main-title h4{float:left;font-size:19px; padding:12px 0; margin-bottom:12px; color:#000; width: auto;}
 .main-title h4 strong{ font-weight:600;}
 
 .modal-content{
@@ -1002,8 +1008,8 @@ a, a:hover {
 .article-detail-newyork .big-post-image .post-title{ font-size:50px; font-weight:600; color:#fff; padding:0 10%;}
 .article-detail-newyork .post-subtitle{ font-size:22px; font-weight:600; margin-bottom:20px;}
 .article-detail-newyork .post-lead{ width:100%; float:left; font-size:1.9em; font-weight:400; line-height:1.5; margin-bottom:20px;}
-.article-detail-newyork p:first-of-type {width:auto; float:left; font-size:1.9em; font-weight:500; line-height:1.5; margin-bottom:20px;}
-.article-detail-newyork p { width:auto; float:left; font-size:22px; font-weight:300; line-height:1.5; margin-bottom:20px;color: rgba(0,0,0,.9); font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;}
+.article-detail-newyork p:first-of-type {width:100%; float:left; font-size:1.9em; font-weight:500; line-height:1.5; margin-bottom:20px;}
+.article-detail-newyork p { width:100%; float:left; font-size:22px; font-weight:300; line-height:1.8; margin-bottom:20px;color: rgba(0,0,0,1); font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;}
 .article-detail-newyork .post-metas{ width:100%; float:left; color:#888; font-family: "Poppins", sans-serif; font-size:11px; margin-top:10px; }
 .article-detail-newyork .post-metas p{ width:100%; float:left; color:#666; font-family: "Poppins", sans-serif; font-size:12px; margin-top:0px; }
 .article-detail-newyork .post-metasx p{ width:100%; float:left; color:#fff; font-family: "Poppins", sans-serif; font-size:12px; margin-top:0px; }
@@ -1023,6 +1029,7 @@ a, a:hover {
 .article-detail-newyork .custom-list{ width:100%; float:left; margin-bottom:30px; padding-left:20px;}
 .article-detail-newyork .custom-list li{ width:100%; float:left; margin-bottom:10px;}
 .article-detail-newyork .custom-list li:before{content:''; width:8px; height:3px; background:#000; float:left; border-radius:3px; margin-top:6px; margin-right:10px;}
+
 .article-detail-newyork .social-share{  float:right; margin-bottom:30px;}
 .article-detail-newyork .social-share li{ float:left; margin-right:5px;}
 .article-detail-newyork .social-share li a{ width:35px; height:44px; float:left; line-height:44px; text-align:center;  color:#888; font-size:20px;}
@@ -1346,6 +1353,10 @@ a, a:hover {
 .sticky .sidebar { float:right;}
 .sticky-stop {clear:both;}
 
+
+
+.single ul, .single ol { width:100%; float:left; margin-bottom:30px; padding-left:20px;}
+.single li{ list-style: disc; width:100%; float:left; margin-bottom:10px; font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif; font-size: 22px; font-weight: 300;}
 
 
 

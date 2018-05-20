@@ -28,7 +28,7 @@ class Home extends Component {
                     <p style={{fontSize:'14px'}}>a free place to create, read storie or publishing ideas
  <br/> follow your interest topic, publisher straight on your homepage.</p>
                     <p className="lead">
-                      <Button color="success" style={{borderRadius:'0px', padding:'10px 30px', margin:'20px 0px 0'}}> <a href="https://about.nomadic.co.id" style={{color:'#fff'}}>Learn More</a></Button>
+                      <Button color="success" style={{borderRadius:'0px', padding:'10px 30px', margin:'20px 0px 0'}}> <a href="https://about.nomadic.co.id" style={{color:'#fff'}} alt="more">Learn More</a></Button>
                     </p>
 
                </div>

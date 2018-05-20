@@ -1,5 +1,5 @@
 {
-  "name": "front-nomadic-beta",
+  "name": "front-nomadic",
   "version": "0.0.1",
   "private": true,
   "devDependencies": {
@@ -69,7 +69,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && react-snapshot && echo '/*    /index.html   200' > build/_redirects",
+    "build": "react-scripts build && react-snapshot && echo '/*    /index.html   200' > build/_redirects && echo User-agent: Googlebot Disallow: User-agent: googlebot-image Disallow: User-agent: googlebot-mobile Disallow: User-agent: MSNBot Disallow: User-agent: * Disallow: Disallow: /build/ > build/robots.txt",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
